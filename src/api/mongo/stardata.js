@@ -28,7 +28,7 @@ export async function getStarData() {
 
 		const result = await stardata
 			.find({})
-			//.limit(20)
+			.limit(20)
 			.map(user => ({ ...user, _id: user.id.toString() }))
 			.toArray();
 
