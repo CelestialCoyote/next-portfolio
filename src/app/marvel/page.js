@@ -15,37 +15,37 @@ const SearchCharacters = () => {
 
 	const [searchText, setSearchText] = useState('');
 
-    const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
-    const marvelAuth = generateMarvelAuthentication();
+	const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
+	const marvelAuth = generateMarvelAuthentication();
 
 
-    const submitForm = (event) => {
-        //event.preventDefault();
-        //searchCharacters();
-        //setSearchText('');
+	const submitForm = (event) => {
+		event.preventDefault();
+		searchCharacters();
+		setSearchText('');
+		console.log(searchText);
+	};
+
+	const searchCharacters = async () => {
 		console.log("here");
-    };
 
-    const searchCharacters = async () => {
-		console.log("here");
+		let url = `${BASE_MARVEL_URL}/characters?nameStartsWith=${searchText}${marvelAuth}`;
 
-        let url = `${BASE_MARVEL_URL}/characters?nameStartsWith=${searchText}${marvelAuth}`;
+		try {
+			let comicData = await axios.get(url);
 
-        try {
-            let comicData = await axios.get(url);
-
-            setCharacters(comicData.data.data.results);
-        } catch (error) {
-            console.log(error.message);
-        }
-    };
+			setCharacters(comicData.data.data.results);
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
 
 	return (
 
 		<div>
 
 			<div
-				onSubmit={submitForm}
+				//onSubmit={submitForm}
 				className="flex justify-center mt-10"
 			>
 				<input
@@ -56,7 +56,12 @@ const SearchCharacters = () => {
 					onChange={(event) => setSearchText(event.target.value)}
 				/>
 
-				<button className="ml-6 border-2 p-2" type="Submit">Search</button>
+				<button
+					type="Submit"
+					className="ml-6 border-2 p-2"
+					onSubmit={submitForm}
+				>
+					Search</button>
 			</div>
 
 			<div>
