@@ -16,6 +16,7 @@ const SearchBar = ({ setCharacters }) => {
         event.preventDefault();
         searchCharacters();
         setSearchText('');
+		console.log("here");
     };
 
     const searchCharacters = async () => {
