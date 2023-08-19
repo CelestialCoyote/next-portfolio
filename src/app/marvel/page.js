@@ -19,7 +19,9 @@ const SearchCharacters = () => {
 			<SearchBar setCharacters={setCharacters} />
 
 			<div>
-				{!characterDetails &&
+				{characters}
+				
+				{/* {!characterDetails &&
 					characters.map(character =>
 						<CharacterCard
 							key={character.id}
@@ -35,7 +37,7 @@ const SearchCharacters = () => {
 						character={character}
 						setCharacterDetails={setCharacterDetails}
 					/>
-				}
+				} */}
 
 			</div>
 

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import generateMarvelAuthentication from '../../marvelAPI/generateMarvelAuthentication';
-//import { StyledSearchBar } from "./SearchBar.styled";
 
 
 const SearchBar = ({ setCharacters }) => {
@@ -26,6 +25,8 @@ const SearchBar = ({ setCharacters }) => {
             let comicData = await axios.get(url);
 
             setCharacters(comicData.data.data.results);
+
+			console.log("here");
         } catch (error) {
             console.log(error.message);
         }
@@ -33,16 +34,19 @@ const SearchBar = ({ setCharacters }) => {
 
     return (
         
-        <div className="searchBar" onSubmit={submitForm}>
+        <div
+			onSubmit={submitForm}
+			className="flex justify-center mt-10"
+		>
             <input
-                className="searchText"
+                className="text-blue-500"
                 type="text"
                 value={searchText}
                 placeholder="character name, i.e. Hulk"
                 onChange={(event) => setSearchText(event.target.value)}
             />
 
-            <button className="search-button" type="Submit">Search</button>
+            <button className="ml-6 border-2 p-2" type="Submit">Search</button>
         </div>
     );
 };
