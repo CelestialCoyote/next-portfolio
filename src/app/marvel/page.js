@@ -21,33 +21,16 @@ const SearchCharacters = () => {
 
 	const submitForm = (event) => {
 		event.preventDefault();
-		//searchCharacters();
 		getCharacters();
 		setSearchText('');
-		console.log(searchText);
-	};
-
-	const searchCharacters = async () => {
-		console.log("here");
-
-		let url = `${BASE_MARVEL_URL}/characters?nameStartsWith=${searchText}${marvelAuth}`;
-
-		try {
-			let comicData = await axios.get(url);
-
-			setCharacters(comicData.data.data.results);
-		} catch (error) {
-			console.log(error.message);
-		}
 	};
 
 	const getCharacters = async () => {
-		fetch(`/api/marvel/?startswith=${searchText}`)
-			//.then((res) => console.log(res.json()))
+		fetch(`/api/marvel/?nameStartsWith=${searchText}`)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
-				//setCharacters(data.data.data.results)
+				//console.log(data);
+				setCharacters(data.data.results)
 			})
 	};
 
@@ -76,9 +59,8 @@ const SearchCharacters = () => {
 			</div>
 
 			<div>
-				{console.log(characters)}
 
-				{/* {!characterDetails &&
+				{!characterDetails &&
 					characters.map(character =>
 						<CharacterCard
 							key={character.id}
@@ -94,7 +76,7 @@ const SearchCharacters = () => {
 						character={character}
 						setCharacterDetails={setCharacterDetails}
 					/>
-				} */}
+				}
 
 			</div>
 
