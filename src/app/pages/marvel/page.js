@@ -21,7 +21,8 @@ const SearchCharacters = () => {
 
 	const submitForm = (event) => {
 		event.preventDefault();
-		searchCharacters();
+		//searchCharacters();
+		getCharacters();
 		setSearchText('');
 		console.log(searchText);
 	};
@@ -38,6 +39,14 @@ const SearchCharacters = () => {
 		} catch (error) {
 			console.log(error.message);
 		}
+	};
+
+	const getCharacters = async () => {
+		fetch(`/api/marvel/?startswith=${searchText}`)
+			.then((res) => res.json())
+			.then((data) => {
+				setCharacters(data.data.data.results)
+			})
 	};
 
 	return (
@@ -59,7 +68,7 @@ const SearchCharacters = () => {
 				<button
 					type="Submit"
 					className="ml-6 border-2 p-2"
-					onSubmit={submitForm}
+					onClick={submitForm}
 				>
 					Search</button>
 			</div>
