@@ -43,9 +43,11 @@ const SearchCharacters = () => {
 
 	const getCharacters = async () => {
 		fetch(`/api/marvel/?startswith=${searchText}`)
+			//.then((res) => console.log(res.json()))
 			.then((res) => res.json())
 			.then((data) => {
-				setCharacters(data.data.data.results)
+				console.log(data);
+				//setCharacters(data.data.data.results)
 			})
 	};
 
