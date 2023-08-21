@@ -1,48 +1,51 @@
-"use client";
-
-
 import React from 'react';
-//import { StyledCharacterCard } from './CharacterCard.styled';
-//import './CharacterCard.css';
+import Image from 'next/image';
 
 
 const CharacterCard = ({ character, setCharacter, setCharacterDetails }) => {
-    const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+	const characterImage = `${character.thumbnail.path}.${character.thumbnail.extension}`;
 
-    return (
+	return (
 
-        <div>
+		<div className="flex flex-col justify-between w-96 border-2">
 
-            <img className="characterCard_image" src={characterImage} alt="character" />
-            <div className="characterCard_container">
-                <div className="characterCard_info">
-                    <p
-                        className="characterCard_text">
-                        <span className="heading">Marvel ID: </span>
-                        {character.id}
-                    </p>
-                    <p
-                        className="characterCard_text">
-                        <span className="heading">Name: </span>
-                        {character.name}
-                    </p>
-                </div>
+			<Image
+				className="w-full h-auto"
+				src={characterImage}
+				alt="character"
+				width="0"
+				height="0"
+				sizes="100vh"
+			/>
+			<div className="">
+				<div className="">
+					<p
+						className="text-red-500">
+						<span className="heading">Marvel ID: </span>
+						{character.id}
+					</p>
+					<p
+						className="characterCard_text">
+						<span className="heading">Name: </span>
+						{character.name}
+					</p>
+				</div>
 
-                <div className="characterCard_actions">
-                    <button
-                        className="characterCard_button"
-                        onClick={() => {
-                            setCharacter(character);
-                            setCharacterDetails(true);
-                        }}
-                    >
-                        Show More
-                    </button>
-                </div>
-            </div>
+				<div className="characterCard_actions">
+					<button
+						className="characterCard_button"
+						onClick={() => {
+							setCharacter(character);
+							setCharacterDetails(true);
+						}}
+					>
+						Show More
+					</button>
+				</div>
+			</div>
 
-        </div>
-    );
+		</div>
+	);
 };
 
 

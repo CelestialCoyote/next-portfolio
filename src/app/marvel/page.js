@@ -50,7 +50,7 @@ const SearchCharacters = () => {
 					Search</button>
 			</div>
 
-			<div>
+			<div className="flex flex-wrap justify-center mt-10 gap-8">
 
 				{!characterDetails &&
 					characters.map(character =>
