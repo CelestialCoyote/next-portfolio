@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
-import generateMarvelAuthentication from '../../marvelAPI/generateMarvelAuthentication';
+import generateMarvelAuthentication from '../../../utils/generateMarvelAuthentication';
 
 
 const SearchBar = ({ setCharacters }) => {

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import generateMarvelAuthentication from '@/app/marvelAPI/generateMarvelAuthentication';
+import generateMarvelAuthentication from '@/utils/generateMarvelAuthentication';
 //import { StyledCharacterDetails } from './CharacterDetails.styled';
 import ComicCard from '../ComicCard/ComicCard';
 //import './CharacterDetails.css';

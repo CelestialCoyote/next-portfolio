@@ -23,8 +23,8 @@ const SearchCharacters = () => {
 		fetch(`/api/marvel/?nameStartsWith=${searchText}`)
 			.then((res) => res.json())
 			.then((data) => {
-				//setCharacters(data.data.results)
-				setCharacters(data);
+				console.log(data);
+				setCharacters(data.data.results)
 			});
 	};
 

@@ -1,4 +1,4 @@
-import main from "../database/connection";
+import main from "../../db/connection";
 import star from "../database/schema";
 
 

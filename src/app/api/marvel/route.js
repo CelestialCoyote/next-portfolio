@@ -1,18 +1,6 @@
 import { NextResponse } from "next/server";
-import CryptoJS from 'crypto-js';
+import generateMarvelAuthentication from "@/utils/generateMarvelAuthentication";
 
-
-const generateMarvelAuthentication = () => {
-	const API_KEY = process.env.MARVEL_API_KEY;
-	const PRIVATE_KEY = process.env.MARVEL_PRIVATE_KEY;
-
-	let ts = new Date().getTime();
-	let message = CryptoJS.MD5(ts + PRIVATE_KEY + API_KEY);
-	let hash = message.toString();
-	let marvelAuth = `&ts=${ts}&apikey=${API_KEY}&hash=${hash}`
-
-	return marvelAuth;
-};
 
 const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
 const marvelAuth = generateMarvelAuthentication();
@@ -24,8 +12,8 @@ export async function GET(request) {
 	//console.log(`searchParams: ${searchParams}`);
 	let url = `${BASE_MARVEL_URL}/characters?${searchParams}${marvelAuth}`;
 
-	const data = await fetch(url);
-	const characters = await data.json();
+	const response = await fetch(url)
+		.then((res) => res.json());
 
-	return NextResponse.json(characters.data.results);
+	return NextResponse.json(response);
 }
