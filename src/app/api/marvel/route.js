@@ -21,15 +21,11 @@ const marvelAuth = generateMarvelAuthentication();
 export async function GET(request) {
 	const { searchParams } = new URL(request.url);
 
-	console.log(`searchParams: ${searchParams}`);
+	//console.log(`searchParams: ${searchParams}`);
 	let url = `${BASE_MARVEL_URL}/characters?${searchParams}${marvelAuth}`;
-	
-	const data = await fetch(url)
-		.then(response => response.json());
-	
-	//console.log(data.data.results);
-	//console.log(data);
 
-	//return NextResponse.json({ message: "Hello World" }, { status: 200 });
-	return NextResponse.json(data);
+	const data = await fetch(url);
+	const characters = await data.json();
+
+	return NextResponse.json(characters.data.results);
 }

@@ -1,9 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import axios from 'axios';
-import generateMarvelAuthentication from '@/app/marvelAPI/generateMarvelAuthentication';
-import SearchBar from "@/app/components/SearchBar/SearchBar";
 import CharacterCard from '@/app/components/CharacterCard/CharacterCard';
 import CharacterDetails from '@/app/components/CharacterDetails/CharacterDetails';
 
@@ -15,31 +12,26 @@ const SearchCharacters = () => {
 
 	const [searchText, setSearchText] = useState('');
 
-	const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public/';
-	const marvelAuth = generateMarvelAuthentication();
 
-
-	const submitForm = (event) => {
+	const searchMarvel = (event) => {
 		event.preventDefault();
 		getCharacters();
 		setSearchText('');
 	};
 
-	const getCharacters = async () => {
+	const getCharacters = () => {
 		fetch(`/api/marvel/?nameStartsWith=${searchText}`)
 			.then((res) => res.json())
 			.then((data) => {
-				//console.log(data);
-				setCharacters(data.data.results)
-			})
+				//setCharacters(data.data.results)
+				setCharacters(data);
+			});
 	};
 
 	return (
-
 		<div>
 
 			<div
-				//onSubmit={submitForm}
 				className="flex justify-center mt-10"
 			>
 				<input
@@ -53,7 +45,7 @@ const SearchCharacters = () => {
 				<button
 					type="Submit"
 					className="ml-6 border-2 p-2"
-					onClick={submitForm}
+					onClick={searchMarvel}
 				>
 					Search</button>
 			</div>
