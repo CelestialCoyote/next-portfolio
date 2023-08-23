@@ -1,36 +1,64 @@
-import main from "../../db/connection";
-import star from "../database/schema";
+//import Link from 'next/link';
+import dbConnect from '../lib/dbConnect';
+import Star from '../models/Star';
 
 
-export default function get_Stars(req, res) {
-	main().catch(error => console.error(error));
+const getStarData = async () => {
+	await dbConnect();
 
-	
+	try {
+		const result = await Star.find({});
+
+		const stars = result.map((doc) => {
+			const star = doc.toObject();
+			star._id = star._id.toString();
+
+			return star;
+		});
+
+		console.log("fetching star data");
+		console.log(stars);
+
+		return stars;
+	}
+	catch (err) {
+		console.log(err.message);
+
+		return false;
+	}
+
+	/* find all the data in our database */
+	//const result = await Star.find({})
+
+	// const stars = result.map((doc) => {
+	// 	const star = doc.toObject();
+	// 	star._id = star._id.toString();
+
+	// 	return star;
+	// });
+
+	//return result.json();
 }
 
 
+export default async function StarData() {
+	const stars = await getStarData();
 
-
-
-// import { getStarData } from "@/api/mongo/stardata";
-
-
-// const handler = async (req, res) => {
-// 	if (req.method === 'GET') {
-// 		try {
-// 			const { stardata, error } = await getStarData();
-
-// 			if (error) throw new Error(error);
-
-// 			return res.status(200).json({ stardata });
-// 		} catch (error) {
-// 			return  res.status(500).json({ error: error.message });
-// 		}
-// 	}
-
-// 	res.setHeader('Allow', ['GET']);
-// 	res.status(425).end(`Method ${req.method} is not allowed.`);
-// }
-
-
-// export default handler;
+	return (
+		<div>
+			{stars.map((star) => {
+				return (
+					<div key={star._id}>
+						<div className="">
+							<h5 className="">Name: {star.name}</h5>
+							<div className="main-content">
+								<p className="">HR: {star.hr}</p>
+								<p className="">HIP: {star.hip}</p>
+							</div>
+						</div>
+					</div>
+				)
+			})}
+		</div>
+	);
+};
