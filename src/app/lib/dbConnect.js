@@ -1,34 +1,35 @@
-import { MongoClient } from 'mongodb'
+// import { MongoClient } from 'mongodb'
 
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
-}
 
-const uri = process.env.MONGODB_URI
-const options = {}
+// if (!process.env.MONGODB_URI) {
+//   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
+// }
 
-let client
-let clientPromise
+// const uri = process.env.MONGODB_URI
+// const options = {}
 
-if (process.env.NODE_ENV === 'development') {
-  // In development mode, use a global variable so that the value
-  // is preserved across module reloads caused by HMR (Hot Module Replacement).
-  let globalWithMongo = global
+// let client
+// let clientPromise
 
-  if (!globalWithMongo._mongoClientPromise) {
-    client = new MongoClient(uri, options)
-    globalWithMongo._mongoClientPromise = client.connect()
-  }
-  clientPromise = globalWithMongo._mongoClientPromise
-} else {
-  // In production mode, it's best to not use a global variable.
-  client = new MongoClient(uri, options)
-  clientPromise = client.connect()
-}
+// if (process.env.NODE_ENV === 'development') {
+//   // In development mode, use a global variable so that the value
+//   // is preserved across module reloads caused by HMR (Hot Module Replacement).
+//   let globalWithMongo = global
 
-// Export a module-scoped MongoClient promise. By doing this in a
-// separate module, the client can be shared across functions.
-export default clientPromise
+//   if (!globalWithMongo._mongoClientPromise) {
+//     client = new MongoClient(uri, options)
+//     globalWithMongo._mongoClientPromise = client.connect()
+//   }
+//   clientPromise = globalWithMongo._mongoClientPromise
+// } else {
+//   // In production mode, it's best to not use a global variable.
+//   client = new MongoClient(uri, options)
+//   clientPromise = client.connect()
+// }
+
+// // Export a module-scoped MongoClient promise. By doing this in a
+// // separate module, the client can be shared across functions.
+// export default clientPromise
 
 
 
@@ -71,30 +72,40 @@ export default clientPromise
 //   .finally(() => client.close());
 
 
-// import { MongoClient } from 'mongodb'
+import { MongoClient } from 'mongodb';
 
 
-// if (!process.env.MONGODB_URI) {
-//   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
-// }
+if (!process.env.MONGODB_URI) {
+  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
+}
 
-// const uri = process.env.MONGODB_URI
+const uri = process.env.MONGODB_URI
 
-// async function main(){
-//     const client = new MongoClient(uri);
+async function main(){
+    const client = new MongoClient(uri);
  
-//     try {
-//         // Connect to the MongoDB cluster
-//         await client.connect();
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
  
-//         // Make the appropriate DB calls
-//         await  listDatabases(client);
+        // Make the appropriate DB calls
+        await  listDatabases(client);
  
-//     } catch (e) {
-//         console.error(e);
-//     } finally {
-//         await client.close();
-//     }
-// }
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+}
 
-// main().catch(console.error);
+main().catch(console.error);
+
+async function listDatabases(client) {
+	const databaseList = await client.db().admin().listDatabases();
+
+	console.log(`Databases: ${JSON.stringify(databaseList)}`);
+	// databaseLiet.database.forEach(db => {
+	// 	console.log(`- ${db.name}`);
+		
+	// });
+}
