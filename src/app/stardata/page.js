@@ -11,30 +11,40 @@ export async function getData() {
 			.find({})
 			// .limit(20)
 			.toArray();
-
-		console.log(stars);
-		return {
-			props: { stars: JSON.parse(JSON.stringify(stars)) },
-		};
+		
+		return stars;
+		
 	} catch (e) {
 		console.error(e);
 	}
-}
+};
 
 
-export default function Stars({ stars }) {
+export default async function Stars() {
+	const stars = await getData();
+
 	return (
 		<div>
-			<h1>Bright Stars</h1>
-			<ul>
+			<h1 className="text-3xl text-blue-500 mb-10">Bright Stars</h1>
+			<div>
 				{stars.map((star) => (
-					<li key={star._id}>
+					<div
+						key={star._id}
+						className="mb-6 text-green-400"
+					>
 						<h2>Star Name: {star.name}</h2>
+						<p>IAU Approved Name: {star.iauAppoved}</p>
 						<p>HR: {star.hr}</p>
 						<p>HIP: {star.hip}</p>
-					</li>
+						<p>Bayer: {star.bayer}</p>
+						<p>Flamsteed: {star.flamsteed}</p>
+						<p>Bayer/ Flamsteed: {star.bayerFlamsteed}</p>
+						<p>Constellation: {star.constellation}</p>
+						<p>Constellation Abbrev: {star.constellationAbbreviation}</p>
+						<p>Visual Magnitude: {star.vmag}</p>
+					</div>
 				))}
-			</ul>
+			</div>
 		</div>
 	);
 }
