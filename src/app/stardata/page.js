@@ -1,64 +1,40 @@
-//import Link from 'next/link';
-import dbConnect from '../lib/dbConnect';
-import Star from '../models/Star';
+import clientPromise from "../lib/dbConnect";
 
 
-const getStarData = async () => {
-	await dbConnect();
-
+export async function getData() {
 	try {
-		const result = await Star.find({});
+		const client = await clientPromise;
+		const db = client.db("bsc5");
 
-		const stars = result.map((doc) => {
-			const star = doc.toObject();
-			star._id = star._id.toString();
+		const stars = await db
+			.collection("starData")
+			.find({})
+			// .limit(20)
+			.toArray();
 
-			return star;
-		});
-
-		console.log("fetching star data");
 		console.log(stars);
-
-		return stars;
+		return {
+			props: { stars: JSON.parse(JSON.stringify(stars)) },
+		};
+	} catch (e) {
+		console.error(e);
 	}
-	catch (err) {
-		console.log(err.message);
-
-		return false;
-	}
-
-	/* find all the data in our database */
-	//const result = await Star.find({})
-
-	// const stars = result.map((doc) => {
-	// 	const star = doc.toObject();
-	// 	star._id = star._id.toString();
-
-	// 	return star;
-	// });
-
-	//return result.json();
 }
 
 
-export default async function StarData() {
-	const stars = await getStarData();
-
+export default function Stars({ stars }) {
 	return (
 		<div>
-			{stars.map((star) => {
-				return (
-					<div key={star._id}>
-						<div className="">
-							<h5 className="">Name: {star.name}</h5>
-							<div className="main-content">
-								<p className="">HR: {star.hr}</p>
-								<p className="">HIP: {star.hip}</p>
-							</div>
-						</div>
-					</div>
-				)
-			})}
+			<h1>Bright Stars</h1>
+			<ul>
+				{stars.map((star) => (
+					<li key={star._id}>
+						<h2>Star Name: {star.name}</h2>
+						<p>HR: {star.hr}</p>
+						<p>HIP: {star.hip}</p>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
-};
+}
