@@ -4,27 +4,23 @@ import clientPromise from "../lib/dbConnect";
 export async function getData() {
 	try {
 		const client = await clientPromise;
-		const db = client.db("bsc5");
-
-		// const stars = await db
-		// 	.collection("starData")
-		// 	.find({})
-		// 	// .limit(20)
-		// 	.toArray();
+		const db = client.db("bsc5").collection("starData");
 
 		const stars = await db
-			.collection("starData")
-			//.find({ "name": "Sirius" })
-			//.find({ "constellationAbbreviation": "Cma" })
-			.find({ "vmag": { $lte: 1.5} })
-			// .limit(20)
-			.sort({ vmag: 1 })
+			.find({})
+			// .find(
+			// 	{
+			// 		"constellationAbbreviation": "Cen",
+			// 		"vmag": { $lte: 2.5 }
+			// 	}
+			// )
+			.sort({ vmag: -1 })
 			.toArray();
 
 		console.log(stars);
-		
+
 		return stars;
-		
+
 	} catch (e) {
 		console.error(e);
 	}
