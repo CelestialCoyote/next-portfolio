@@ -14,7 +14,7 @@ export async function getData() {
 			// 		"vmag": { $lte: 2.5 }
 			// 	}
 			// )
-			.sort({ vmag: -1 })
+			.sort({ vmag: 1 })
 			.toArray();
 
 		console.log(stars);
@@ -37,9 +37,14 @@ export default async function Stars() {
 				{stars && stars.map((star) => (
 					<div
 						key={star._id}
-						className="mb-6 text-green-400"
+						className="mb-8 border-2 border-blue-300 rounded-xl p-4"
 					>
-						<h2>Star Name: {star.name}</h2>
+						<div className="flex">
+							<label className="text-2xl text-green-400 w-36">Star Name:</label>
+							<label className="text-2xl text-blue-300">{star.name}</label>
+						</div>
+
+						
 						<p>IAU Approved Name: {star.iauAppoved ? "true" : "false"}</p>
 						<p>HR: {star.hr}</p>
 						<p>HIP: {star.hip}</p>
