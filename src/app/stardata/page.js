@@ -4,15 +4,26 @@ import clientPromise from "../lib/dbConnect";
 export async function getData() {
 	try {
 		const client = await clientPromise;
-		//const db = client.db("bsc5");
+		const db = client.db("bsc5");
 
 		// const stars = await db
 		// 	.collection("starData")
 		// 	.find({})
 		// 	// .limit(20)
 		// 	.toArray();
+
+		const stars = await db
+			.collection("starData")
+			//.find({ "name": "Sirius" })
+			//.find({ "constellationAbbreviation": "Cma" })
+			.find({ "vmag": { $lte: 1.5} })
+			// .limit(20)
+			.sort({ vmag: 1 })
+			.toArray();
+
+		console.log(stars);
 		
-		// return stars;
+		return stars;
 		
 	} catch (e) {
 		console.error(e);
@@ -26,8 +37,8 @@ export default async function Stars() {
 	return (
 		<div>
 			<h1 className="text-3xl text-blue-500 mb-10">Bright Stars</h1>
-			{/* <div>
-				{stars.map((star) => (
+			<div>
+				{stars && stars.map((star) => (
 					<div
 						key={star._id}
 						className="mb-6 text-green-400"
@@ -44,7 +55,7 @@ export default async function Stars() {
 						<p>Visual Magnitude: {star.vmag}</p>
 					</div>
 				))}
-			</div> */}
+			</div>
 		</div>
 	);
 }
