@@ -7,13 +7,13 @@ export async function getData() {
 		const db = client.db("bsc5").collection("starData");
 
 		const stars = await db
-			.find({})
-			// .find(
-			// 	{
-			// 		"constellationAbbreviation": "Cen",
-			// 		"vmag": { $lte: 2.5 }
-			// 	}
-			// )
+			//.find({})
+			.find(
+				{
+					"constellationAbbreviation": "Ori",
+					"vmag": { $lte: 4.5 }
+				}
+			)
 			.sort({ vmag: 1 })
 			.toArray();
 
