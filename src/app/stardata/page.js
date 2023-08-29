@@ -10,14 +10,14 @@ export async function getData() {
 			//.find({})
 			.find(
 				{
-					"constellationAbbreviation": "Ori",
-					"vmag": { $lte: 4.5 }
+					"vmag": { $lte: 3.5 }
 				}
 			)
+			.limit(100)
 			.sort({ vmag: 1 })
 			.toArray();
 
-		console.log(stars);
+		//console.log(stars);
 
 		return stars;
 
@@ -44,7 +44,6 @@ export default async function Stars() {
 							<label className="text-2xl text-blue-300">{star.name}</label>
 						</div>
 
-						
 						<p>IAU Approved Name: {star.iauAppoved ? "true" : "false"}</p>
 						<p>HR: {star.hr}</p>
 						<p>HIP: {star.hip}</p>
