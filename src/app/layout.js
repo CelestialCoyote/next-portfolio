@@ -4,12 +4,12 @@ import { Inter } from 'next/font/google';
 import Navbar from './components/NavBar/page';
 
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
 	title: 'CelestialCoyote',
 	description: 'Portfolio',
-}
+};
 
 export default function RootLayout({ children }) {
 	return (
@@ -19,5 +19,5 @@ export default function RootLayout({ children }) {
 				{children}
 			</body>
 		</html>
-	)
-}
+	);
+};
