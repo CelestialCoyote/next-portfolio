@@ -18,7 +18,7 @@ export default function SideNav() {
 	];
 
 	return (
-		<div className="bg-black w-40 pt-8 h-screen">
+		<div className="bg-black w-40 pt-8 h-[calc(100vh-5rem)] ">
 			{navigation.map((item) => (
 				<Link
 					key={item.name}
