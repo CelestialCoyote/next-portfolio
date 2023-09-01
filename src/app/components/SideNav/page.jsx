@@ -1,21 +1,7 @@
 import Link from 'next/link';
 
 
-export default function SideNav() {
-	//const router = useRouter();
-
-	const navigation = [
-		{
-			name: "Artists",
-			href: "/marvel/artists",
-			//icon: UserIcon
-		},
-		{
-			name: "Characters",
-			href: "/marvel/characters",
-			//icon: UsersIcon
-		},
-	];
+export default function SideNav({ navigation }) {
 
 	return (
 		<div className="bg-black w-40 pt-8 h-[calc(100vh-5rem)] ">
