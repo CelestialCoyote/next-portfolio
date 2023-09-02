@@ -8,8 +8,14 @@ const marvelAuth = generateMarvelAuthentication();
 
 
 const getCharacterData = async () => {
+	const generateRandomLetter = () => {
+		const alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+		return alphabet[Math.floor(Math.random() * alphabet.length)]
+	}
+
 	try {
-		const response = await fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=t${marvelAuth}`);
+		const response = await fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=${generateRandomLetter()}${marvelAuth}`);
 
 		if (!response.ok) {
 			throw new Error("Failed to fetch data");
@@ -25,9 +31,8 @@ const getCharacterData = async () => {
 
 
 export default async function SearchCharacters() {
-
-	const data = await getCharacterData();
-	const characters = data.data.results;
+	const marvelData = await getCharacterData();
+	const characters = marvelData.data.results;
 
 	return (
 		<div className="flex flex-col">
@@ -65,8 +70,8 @@ export default async function SearchCharacters() {
 					<CharacterCard
 						key={character.id}
 						character={character}
-						//setCharacter={setCharacter}
-						//setCharacterDetails={setCharacterDetails}
+					//setCharacter={setCharacter}
+					//setCharacterDetails={setCharacterDetails}
 					/>
 				)}
 
