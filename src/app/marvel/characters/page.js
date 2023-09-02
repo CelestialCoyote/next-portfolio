@@ -1,7 +1,3 @@
-//"use client";
-
-
-//import { useState } from "react";
 import CharacterCard from "@/app/components/CharacterCard/CharacterCard";
 import CharacterDetails from "@/app/components/CharacterDetails/CharacterDetails";
 import generateMarvelAuthentication from "@/utils/generateMarvelAuthentication";
@@ -13,78 +9,25 @@ const marvelAuth = generateMarvelAuthentication();
 
 const getCharacterData = async () => {
 	try {
-		const response = fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=i${marvelAuth}`)
-			// .then((res) => res.json())
-			// .then(data => {
-			// 	console.log("Successfully got character data");
-			// 	//setCharacters(data.data.results)
-			// 	//console.log(`data: ${data.data.results}`);
-			// 	//return data.data.results;
-			// });
+		const response = await fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=t${marvelAuth}`);
 
 		if (!response.ok) {
 			throw new Error("Failed to fetch data");
+		} else {
+			console.log("data fetched");
 		};
 
-		console.log(`response.json(): ${response.json()}`);
 		return response.json();
-		//return response;
 	} catch (error) {
 		console.log(error);
 	}
 };
 
-// const getCharacterData = () => {
-// 	fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=i${marvelAuth}`)
-// 		.then((res) => res.json())
-// 		.then((data) => {
-// 			console.log(data.data.results);
-// 			//setCharacters(data.data.results)
-// 			//setCharacters(data)
-// 		});
-// };
-
 
 export default async function SearchCharacters() {
-	//const [characters, setCharacters] = useState([]);
-	//const [character, setCharacter] = useState();
-	//const [characterDetails, setCharacterDetails] = useState(false);
 
-	//const [searchText, setSearchText] = useState('');
-
-
-	//const data = await getData();
-	//console.log(data.data.results);
-	//setCharacters(data);
-
-	// const searchMarvel = (event) => {
-	// 	event.preventDefault();
-	// 	getCharacters();
-	// 	setSearchText('');
-	// };
-
-	// const getCharacters = () => {
-	// 	fetch(`/api/marvel/?nameStartsWith=${searchText}`)
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 			setCharacters(data.data.results)
-	// 		});
-	// };
-
-	// const getCharacters = () => {
-	// 	fetch(`/api/marvel/?nameStartsWith=${"b"}`)
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			console.log(data);
-	// 			//setCharacters(data.data.results)
-	// 			setCharacters(data)
-	// 		});
-	// };
-
-	const characters = getCharacterData();
-	//setCharacters(getCharacterData());
-	console.log(`characters: ${characters}`);
+	const data = await getCharacterData();
+	const characters = data.data.results;
 
 	return (
 		<div className="flex flex-col">
@@ -94,7 +37,7 @@ export default async function SearchCharacters() {
 				Marvel Data
 			</label>
 			{/* <div className="mt-8">
-				{characters.map(character => <p>{character.name}</p>)}
+				{characters.map((character, index) => <p key={index}>{character.name}</p>)}
 			</div> */}
 
 			{/* <div
@@ -118,18 +61,17 @@ export default async function SearchCharacters() {
 
 			<div className="flex flex-wrap justify-center mt-10 gap-8">
 
-				{/* {!characterDetails &&
-					characters.map(character =>
-						<CharacterCard
-							key={character.id}
-							character={character}
-							setCharacter={setCharacter}
-							setCharacterDetails={setCharacterDetails}
-						/>
-					)}
-}
+				{characters.map(character =>
+					<CharacterCard
+						key={character.id}
+						character={character}
+						//setCharacter={setCharacter}
+						//setCharacterDetails={setCharacterDetails}
+					/>
+				)}
 
-				{characterDetails &&
+
+				{/* {characters &&
 					<CharacterDetails
 						character={character}
 						setCharacterDetails={setCharacterDetails}

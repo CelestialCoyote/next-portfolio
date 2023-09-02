@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import Image from 'next/image';
 
 
@@ -31,7 +31,7 @@ const CharacterCard = ({ character, setCharacter, setCharacterDetails }) => {
 					</p>
 				</div>
 
-				<div className="characterCard_actions">
+				{/* <div className="characterCard_actions">
 					<button
 						className="characterCard_button"
 						onClick={() => {
@@ -41,7 +41,7 @@ const CharacterCard = ({ character, setCharacter, setCharacterDetails }) => {
 					>
 						Show More
 					</button>
-				</div>
+				</div> */}
 			</div>
 
 		</div>
