@@ -1,33 +1,79 @@
-'use client';
+// 'use client';
 
-import { useState } from 'react';
-import CharacterCard from '@/app/components/CharacterCard/CharacterCard';
-import CharacterDetails from '@/app/components/CharacterDetails/CharacterDetails';
+// import { useState } from 'react';
+// import CharacterCard from '@/app/components/CharacterCard/CharacterCard';
+// import CharacterDetails from '@/app/components/CharacterDetails/CharacterDetails';
+
+//export const dynamic = "force-dynamic";
+import { NextResponse } from "next/server";
+import generateMarvelAuthentication from "@/utils/generateMarvelAuthentication";
 
 
-async function getData() {
-	const res = await fetch(`/api/marvel/?nameStartsWith=${"a"}`)
-	// The return value is *not* serialized
-	// You can return Date, Map, Set, etc.
+const BASE_MARVEL_URL = 'http://gateway.marvel.com/v1/public';
+const marvelAuth = generateMarvelAuthentication();
 
-	if (!res.ok) {
-		// This will activate the closest `error.js` Error Boundary
-		throw new Error('Failed to fetch data')
+
+const getCharacterData = async () => {
+	try {
+		//let url = `${BASE_MARVEL_URL}/characters?name=hulk${marvelAuth}`;
+		//console.log(url);
+		//const response = await fetch(url)
+
+		const response = fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=i${marvelAuth}`)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data.data.results);
+				//setCharacters(data.data.results)
+				//setCharacters(data)
+			});
+
+
+		if (!response.ok) {
+			throw new Error("Failed to fetch data");
+		};
+
+		console.log(response);
+		return response;
+		//return NextResponse.json(response);
+	} catch (error) {
+		console.log(error);
 	}
-
-	return res.json()
 };
+
+// const getCharacterData = () => {
+// 	fetch(`${BASE_MARVEL_URL}/characters?nameStartsWith=i${marvelAuth}`)
+// 		.then((res) => res.json())
+// 		.then((data) => {
+// 			console.log(data.data.results);
+// 			//setCharacters(data.data.results)
+// 			//setCharacters(data)
+// 		});
+// };
 
 
 export default async function SearchCharacters() {
-	const [characters, setCharacters] = useState([]);
-	const [character, setCharacter] = useState();
-	const [characterDetails, setCharacterDetails] = useState(false);
+	//const [characters, setCharacters] = useState([]);
+	//const [character, setCharacter] = useState();
+	//const [characterDetails, setCharacterDetails] = useState(false);
 
-	const [searchText, setSearchText] = useState('');
+	//const [searchText, setSearchText] = useState('');
 
-	const data = await getData();
-	console.log(data.data.results);
+
+	// async function getData() {
+	// 	const res = await fetch(`/api/marvel/?nameStartsWith=a`)
+	// 	// The return value is *not* serialized
+	// 	// You can return Date, Map, Set, etc.
+
+	// 	if (!res.ok) {
+	// 		// This will activate the closest `error.js` Error Boundary
+	// 		throw new Error('Failed to fetch data')
+	// 	}
+
+	// 	return res.json()
+	// };
+
+	//const data = await getData();
+	//console.log(data.data.results);
 	//setCharacters(data);
 
 	// const searchMarvel = (event) => {
@@ -46,17 +92,29 @@ export default async function SearchCharacters() {
 	// };
 
 	// const getCharacters = () => {
-	// 	fetch(`/api/marvel/?nameStartsWith=${"a"}`)
+	// 	fetch(`/api/marvel/?nameStartsWith=${"b"}`)
 	// 		.then((res) => res.json())
 	// 		.then((data) => {
 	// 			console.log(data);
-	// 			setCharacters(data.data.results)
+	// 			//setCharacters(data.data.results)
+	// 			setCharacters(data)
 	// 		});
 	// };
 
+	const characters = getCharacterData();
+	//console.log(characters);
+
 	return (
-		<div>
-			{data}
+		<div className="flex flex-col">
+			<label
+				className="text-2xl text-blue-400"
+			>
+				Marvel Data
+			</label>
+			<div className="mt-8">
+				{JSON.stringify(characters)}
+			</div>
+
 			{/* <div
 				className="flex justify-center mt-10"
 			>
