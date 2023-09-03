@@ -23,9 +23,20 @@ export default function RootLayout({ children }) {
 
 
 	return (
-		<div className="flex flex-row">
-			<SideNav navigation = {navigation}/>
-			{children}
+		<div className="flex">
+			<div className="self-start sticky top-20">
+				<SideNav navigation={navigation} />
+			</div>
+
+			<div className="flex flex-col">
+				<div className="flex justify-center h-20 sticky top-20 z-40">
+					<div className="flex justify-center items-center bg-purple-500 w-full mt-6 mb-6">
+						<label className="text-2xl">Search Bar Here</label>
+					</div>
+
+				</div>
+				{children}
+			</div>
 		</div>
 	);
 };

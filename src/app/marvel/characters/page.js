@@ -36,11 +36,7 @@ export default async function SearchCharacters() {
 
 	return (
 		<div className="flex flex-col">
-			<label
-				className="text-2xl text-blue-400"
-			>
-				Marvel Data
-			</label>
+			
 			{/* <div className="mt-8">
 				{characters.map((character, index) => <p key={index}>{character.name}</p>)}
 			</div> */}
