@@ -22,7 +22,7 @@ export default function Navbar() {
 	];
 
 	return (
-		<div className="w-full h-20 bg-purple-500 sticky top-0">
+		<div className="w-full h-20 bg-purple-500 sticky top-0 z-50">
 			<div className="container mx-auto flex items-center h-full">
 				{navigation.map((item) => (
 					<Link

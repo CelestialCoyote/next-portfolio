@@ -7,16 +7,22 @@ const CharacterCard = ({ character, setCharacter, setCharacterDetails }) => {
 
 	return (
 
-		<div className="flex flex-col justify-between w-96 border-2">
+		<div className="flex flex-col justify-between w-96 h-96 border-purple-400 border-2">
 
-			<Image
-				className="w-full h-auto"
-				src={characterImage}
-				alt="character"
-				width="0"
-				height="0"
-				sizes="100vh"
-			/>
+			<div className="flex justify-center h-72">
+				<Image
+					className="w-auto h-full"
+					src={characterImage}
+					alt="character"
+					//priority={false}
+					placeholder="blur"
+					blurDataURL={characterImage}
+					width="0"
+					height="0"
+					sizes="100vh"
+				/>
+			</div>
+
 			<div className="">
 				<div className="">
 					<p
