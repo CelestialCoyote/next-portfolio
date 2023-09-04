@@ -1,4 +1,4 @@
-import CharacterCard from "@/app/components/CharacterCard/CharacterCard";
+import CharacterCard from "@/app/components/CharacterCard";
 import CharacterDetails from "@/app/components/CharacterDetails/CharacterDetails";
 import generateMarvelAuthentication from "@/utils/generateMarvelAuthentication";
 
@@ -36,7 +36,7 @@ export default async function SearchCharacters() {
 
 	return (
 
-		<div className="flex flex-wrap justify-center gap-8 border-2">
+		<div className="flex flex-wrap justify-center gap-8 overflow-y-auto no-scrollbar mb-6">
 
 			{characters.map(character =>
 				<CharacterCard

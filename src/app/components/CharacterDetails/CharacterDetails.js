@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import generateMarvelAuthentication from '@/utils/generateMarvelAuthentication';
 //import { StyledCharacterDetails } from './CharacterDetails.styled';
 import ComicCard from '../ComicCard/ComicCard';
@@ -20,7 +20,7 @@ const CharacterDetails = ({ character, setCharacterDetails }) => {
             const url = `${BASE_MARVEL_URL}/characters/${character.id}/comics?${marvelAuth}`;
 
             try {
-                let comicsData = await axios.get(url);
+                //let comicsData = await axios.get(url);
                 setComicsData(comicsData.data.data.results);
             } catch (error) {
                 console.log(error.message);

@@ -10,20 +10,25 @@ export const metadata = {
 export default function MarvelAPILayout({ children }) {
 	const navigation = [
 		{
-			name: "Artists",
-			href: "/marvel/artists",
+			name: "Characters",
+			href: "/marvel/characters",
 			//icon: UserIcon
 		},
 		{
-			name: "Characters",
-			href: "/marvel/characters",
+			name: "Comics",
+			href: "/marvel/comics",
 			//icon: UsersIcon
+		},
+		{
+			name: "Creators",
+			href: "/marvel/creators",
+			//icon: UserIcon
 		},
 	];
 
 
 	return (
-		<div className="flex pl-4 pr-4">
+		<div className="flex">
 			<div className="self-start sticky top-20">
 				<SideNav navigation={navigation} />
 			</div>
