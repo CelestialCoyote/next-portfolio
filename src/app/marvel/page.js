@@ -1,13 +1,14 @@
 export default function Marvel() {
 
 	return (
-		<div className="flex">
-			<div className="flex w-full border-x-red-500 border-2">
-				<label
-					className="text-2xl"
-				>
-					Marvel API
-					</label>
+		<div className="flex flex-col flex-1">
+			<label
+				className="text-2xl text-center mt-8 mb-8"
+			>
+				Marvel API
+			</label>
+			<div className="flex flex-1">
+
 			</div>
 		</div>
 	);
