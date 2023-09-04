@@ -1,4 +1,4 @@
-import SideNav from "../components/SideNav/page";
+import SideNav from "../components/SideNav";
 
 
 export const metadata = {

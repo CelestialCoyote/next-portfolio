@@ -1,4 +1,3 @@
-//import React from 'react';
 import Image from 'next/image';
 
 
@@ -14,7 +13,6 @@ const CharacterCard = ({ character, setCharacter, setCharacterDetails }) => {
 					className="w-auto h-full"
 					src={characterImage}
 					alt="character"
-					//priority={false}
 					placeholder="blur"
 					blurDataURL={characterImage}
 					width="0"
@@ -26,7 +24,7 @@ const CharacterCard = ({ character, setCharacter, setCharacterDetails }) => {
 			<div className="">
 				<div className="">
 					<p
-						className="text-red-500">
+						className="text-blue-400">
 						<span className="heading">Marvel ID: </span>
 						{character.id}
 					</p>
