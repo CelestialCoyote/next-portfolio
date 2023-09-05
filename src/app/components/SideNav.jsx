@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function SideNav({ navigation }) {
 
 	return (
-		<div className="h-[calc(100vh-5rem)] bg-purple-500 w-48 pt-8 pl-4">
+		<div className="h-[calc(100vh-5rem)] bg-purple-500 w-48 pt-8 pl-4 md:block xs:hidden">
 			<label
 				className="text-blue-300"
 			>
