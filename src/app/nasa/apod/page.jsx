@@ -2,8 +2,12 @@ import Image from 'next/image';
 
 
 const getAPODData = async () => {
+	const date = new Date();
+	let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+	//console.log(currentDate)
+
 	try {
-		const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`);
+		const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&date=${currentDate}`);
 
 		if (!response.ok) {
 			throw new Error("Failed to fetch data");
@@ -20,6 +24,7 @@ const getAPODData = async () => {
 
 export default async function Apod() {
 	const data = await getAPODData();
+	console.log(data)
 
 	if (!data) return <p>No photo data</p>
 
