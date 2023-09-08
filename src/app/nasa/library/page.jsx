@@ -1,12 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import NASALibrarySearch from '@/app/components/NASALibrarySearch';
 
 
 const getLibraryData = async () => {
-	const date = new Date();
-	let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-	//console.log(currentDate)
-
 	try {
 		const response = await fetch("https://images-api.nasa.gov/search?media_type=image");
 
@@ -23,10 +20,10 @@ const getLibraryData = async () => {
 };
 
 
-export default async function Apod() {
+export default async function Library() {
 	const data = await getLibraryData();
 	const items = await data.collection.items;
-	console.log(data)
+	//console.log(data)
 
 	if (!data) return <p>No photo data</p>
 
@@ -34,7 +31,11 @@ export default async function Apod() {
 		<div className='flex flex-col m-4'>
 
 			<main className='flex flex-1 flex-col items-center justify-center'>
-				<h1 className='text-blue-500 text-4xl'>NASA Image And Video Library</h1>
+				<h1 className='text-blue-500 text-4xl mb-8'>
+					NASA Image And Video Library
+				</h1>
+
+				<NASALibrarySearch />
 
 				{/* <div className='flex flex-row m-8 w-full justify-center'>
 					<input
@@ -67,27 +68,31 @@ export default async function Apod() {
 						// 	nasaId={preview.data[0].nasa_id}
 						// />
 
-						<div key={preview.data[0].nasa_id}>
-							<Image
-								src={preview.links[0].href}
-								width={320}
-								height={240}
-								className="sm:rounded-t-lg"
-								style={{
-									maxWidth: "auto",
-									height: "100%",
-								}}
-								placeholder="blur"
-								blurDataURL="/spinner.svg"
-								alt='thumbnail'
-							/>
+						<div 
+							key={preview.data[0].nasa_id}
+							className="mb-8"
+						>
+							<div className="flex justify-center h-72">
+								<Image
+									className="w-auto h-full"
+									src={preview.links[0].href}
+									alt="thumbnail"
+									placeholder="blur"
+									blurDataURL={preview.links[0].href}
+									width="0"
+									height="0"
+									sizes="100vh"
+								/>
+							</div>
 
-							<div className='text-white mt-4'>NASA ID: {preview.data[0].nasa_id}</div>
+							<div className='text-white mt-4'>
+								NASA ID: {preview.data[0].nasa_id}
+							</div>
 						</div>
 					))}
 				</div>
 
-				<Link href="/">Back to home</Link>
+				<Link href="/nasa">Back to NASA API</Link>
 
 			</main>
 		</div>
