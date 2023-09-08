@@ -15,6 +15,11 @@ export default function Navbar() {
 			//icon: UsersIcon
 		},
 		{
+			name: "NASA API",
+			href: "/nasa",
+			//icon: UsersIcon
+		},
+		{
 			name: "Marvel API",
 			href: "/marvel",
 			//icon: UsersIcon
