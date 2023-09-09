@@ -36,7 +36,17 @@ export default async function SearchCharacters() {
 
 	return (
 
-		<div className="flex flex-wrap justify-center gap-8 overflow-y-auto no-scrollbar mb-6">
+		<div 
+			className="
+				flex
+				flex-wrap
+				justify-center
+				gap-8
+				overflow-y-auto
+				no-scrollbar
+				mb-6
+			"
+		>
 
 			{characters.map(character =>
 				<CharacterCard
