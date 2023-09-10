@@ -39,7 +39,6 @@ export default async function Library() {
 		>
 
 			<div
-				// className='grid grid-cols-4 gap-4'
 				className="
 					flex
 					flex-wrap
@@ -54,9 +53,9 @@ export default async function Library() {
 
 					<div
 						key={preview.data[0].nasa_id}
-						className="mb-8"
+						className="flex flex-col items-center m-8"
 					>
-						<div className="flex justify-center h-72">
+						<div className="flex justify-center h-48">
 							<Image
 								className="w-auto h-full"
 								src={preview.links[0].href}
