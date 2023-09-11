@@ -48,20 +48,26 @@ export default async function Library() {
 					mb-6
 				"
 			>
-				{items && items.map((preview) => (
+				{items && items.map((item) => (
 
 					<div
-						key={preview.data[0].nasa_id}
+						key={item.data[0].nasa_id}
 						className="flex flex-col items-center m-8"
 					>
-						<Link href={`/nasa/library/image/${preview.data[0].nasa_id}`}>
+						{/* <Link href={{ pathname: '/about', query: { data: JSON.stringify(episode) } }}></Link> */}
+						<Link
+							href={{
+								pathname: `/nasa/library/image/${item.data[0].nasa_id}`,
+								query: { data: JSON.stringify(item.data[0]) }
+							}
+						}>
 							<div className="flex justify-center h-48">
 								<Image
 									className="w-auto h-full"
-									src={preview.links[0].href}
+									src={item.links[0].href}
 									alt="thumbnail"
 									placeholder="blur"
-									blurDataURL={preview.links[0].href}
+									blurDataURL={item.links[0].href}
 									width="0"
 									height="0"
 									sizes="100vh"
@@ -70,7 +76,7 @@ export default async function Library() {
 						</Link>
 
 						<div className='text-white mt-4'>
-							NASA ID: {preview.data[0].nasa_id}
+							NASA ID: {item.data[0].nasa_id}
 						</div>
 					</div>
 				))}
