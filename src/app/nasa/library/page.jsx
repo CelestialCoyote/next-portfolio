@@ -54,18 +54,20 @@ export default async function Library() {
 						key={preview.data[0].nasa_id}
 						className="flex flex-col items-center m-8"
 					>
-						<div className="flex justify-center h-48">
-							<Image
-								className="w-auto h-full"
-								src={preview.links[0].href}
-								alt="thumbnail"
-								placeholder="blur"
-								blurDataURL={preview.links[0].href}
-								width="0"
-								height="0"
-								sizes="100vh"
-							/>
-						</div>
+						<Link href={`/nasa/library/image/${preview.data[0].nasa_id}`}>
+							<div className="flex justify-center h-48">
+								<Image
+									className="w-auto h-full"
+									src={preview.links[0].href}
+									alt="thumbnail"
+									placeholder="blur"
+									blurDataURL={preview.links[0].href}
+									width="0"
+									height="0"
+									sizes="100vh"
+								/>
+							</div>
+						</Link>
 
 						<div className='text-white mt-4'>
 							NASA ID: {preview.data[0].nasa_id}
