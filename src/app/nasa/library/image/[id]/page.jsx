@@ -1,8 +1,31 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 
-export default function NasaImage({ searchParams }) {
-	console.log(`data: ${JSON.stringify(searchParams)}`);
+const getData = async (nasa_id) => {
+	try {
+		const response = await fetch(`https://images-api.nasa.gov/asset/${nasa_id}`);
+
+		if (!response.ok) {
+			throw new Error("Failed to fetch data");
+		} else {
+			console.log(`data fetched: nasa id ${nasa_id}`);
+		};
+
+		return response.json();
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+
+export default async function NasaImage({ params }) {
+	//console.log(`searchParams: ${JSON.stringify(searchParams)}`);
+	console.log(`nasa id: ${params.id}`);
+	const imageData = await getData(params.id);
+	const image = await imageData.collection.items[1];
+
+	//console.log(imageData);
 
 	return (
 		<div className='flex flex-col flex-1 w-screen m-4 border-2'>
@@ -10,7 +33,19 @@ export default function NasaImage({ searchParams }) {
 			<h1 className='text-4xl text-center mt-8 mb-10'>NASA Image</h1>
 
 			<div className='flex flex-col items-center mt-10'>
-				{searchParams.data}
+				{/* {params.id} */}
+				<div className="flex justify-center">
+					<Image
+						className="w-auto h-full"
+						src={image.href}
+						alt="thumbnail"
+						placeholder="blur"
+						blurDataURL={image.href}
+						width="0"
+						height="0"
+						sizes="100vh"
+					/>
+				</div>
 			</div>
 
 		</div>

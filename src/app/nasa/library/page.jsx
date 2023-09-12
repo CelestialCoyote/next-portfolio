@@ -57,7 +57,6 @@ export default async function Library() {
 						{/* <Link href={{ pathname: '/about', query: { data: JSON.stringify(episode) } }}></Link> */}
 						<Link
 							href={`/nasa/library/image/${item.data[0].nasa_id}`}
-							as={item.data[0]}
 						>
 							<div className="flex justify-center h-48">
 								<Image
