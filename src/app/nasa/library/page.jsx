@@ -50,12 +50,13 @@ export default async function Library() {
 			>
 				{items && items.map((item) => (
 					<div
-						key={item.data[0].nasa_id}
+						key={item.links[0].href}
 						className="flex flex-col items-center m-8"
 					>
-						{console.log(item.data[0])}
+						{console.log(item)}
 						{/* <Link href={{ pathname: '/about', query: { data: JSON.stringify(episode) } }}></Link> */}
 						<Link
+							//href={`/nasa/library/image/${item.data[0].nasa_id}`}
 							href={`/nasa/library/image/${item.data[0].nasa_id}`}
 						>
 							<div className="flex justify-center h-48">

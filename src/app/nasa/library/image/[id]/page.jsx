@@ -4,7 +4,9 @@ import Image from 'next/image';
 
 const getData = async (nasa_id) => {
 	try {
-		const response = await fetch(`https://images-api.nasa.gov/asset/${nasa_id}`);
+		//const response = await fetch(`https://images-api.nasa.gov/asset/${nasa_id}`);
+		//const response = await fetch(`https://images-assets.nasa.gov/image/${nasa_id}/collection.json`);
+		const response = await fetch(`http://images-assets.nasa.gov/image/${nasa_id}/metadata.json`);
 
 		if (!response.ok) {
 			throw new Error("Failed to fetch data");
@@ -23,7 +25,7 @@ export default async function NasaImage({ params }) {
 	//console.log(`searchParams: ${JSON.stringify(searchParams)}`);
 	console.log(`nasa id: ${params.id}`);
 	const imageData = await getData(params.id);
-	const image = await imageData.collection.items[1];
+	//const image = await imageData.collection.items[1];
 
 	console.log(imageData);
 
@@ -31,9 +33,8 @@ export default async function NasaImage({ params }) {
 		<div className='flex flex-col flex-1 w-screen m-4 border-2'>
 
 			<h1 className='text-4xl text-center mt-8 mb-10'>NASA Image</h1>
-
-			<div className='flex flex-col items-center mt-10'>
-				{/* {params.id} */}
+			<p>{JSON.stringify(imageData)}</p>
+			{/* <div className='flex flex-col items-center mt-10'>
 				<div className="flex justify-center">
 					<Image
 						className="w-auto h-full"
@@ -54,7 +55,7 @@ export default async function NasaImage({ params }) {
 					<p>Date Created: {image.date_created}</p>
 					<p>Description: {image.description}</p>
 				</div>
-			</div>
+			</div> */}
 
 		</div>
 	);
