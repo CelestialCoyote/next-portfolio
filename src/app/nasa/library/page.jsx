@@ -49,11 +49,11 @@ export default async function Library() {
 				"
 			>
 				{items && items.map((item) => (
-
 					<div
 						key={item.data[0].nasa_id}
 						className="flex flex-col items-center m-8"
 					>
+						{console.log(item.data[0])}
 						{/* <Link href={{ pathname: '/about', query: { data: JSON.stringify(episode) } }}></Link> */}
 						<Link
 							href={`/nasa/library/image/${item.data[0].nasa_id}`}
@@ -72,8 +72,13 @@ export default async function Library() {
 							</div>
 						</Link>
 
-						<div className='text-white mt-4'>
-							NASA ID: {item.data[0].nasa_id}
+						<div className="flex flex-col text-white mt-4">
+							<p>NASA ID: {item.data[0].nasa_id}</p>
+							<p>Title: {item.data[0].title}</p>
+							<p>Photographer: {item.data[0].photographer}</p>
+							<p>Location: {item.data[0].location}</p>
+							<p>Date Created: {item.data[0].date_created.slice(0, 10)}</p>
+							<p>Description: {item.data[0].description}</p>
 						</div>
 					</div>
 				))}

@@ -25,7 +25,7 @@ export default async function NasaImage({ params }) {
 	const imageData = await getData(params.id);
 	const image = await imageData.collection.items[1];
 
-	//console.log(imageData);
+	console.log(imageData);
 
 	return (
 		<div className='flex flex-col flex-1 w-screen m-4 border-2'>
@@ -45,6 +45,14 @@ export default async function NasaImage({ params }) {
 						height="0"
 						sizes="100vh"
 					/>
+				</div>
+				<div className="flex flex-col text-white mt-4">
+					<p>NASA ID: {image.nasa_id}</p>
+					<p>Title: {image.title}</p>
+					<p>Photographer: {image.photographer}</p>
+					<p>Location: {image.location}</p>
+					<p>Date Created: {image.date_created}</p>
+					<p>Description: {image.description}</p>
 				</div>
 			</div>
 
