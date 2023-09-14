@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 
 export default function NasaImageResults({ items }) {
-	
+	const [details, setDetails] = useState(false);
+
 	return (
 		<div
 			className="
@@ -41,14 +45,23 @@ export default function NasaImageResults({ items }) {
 						</div>
 					</Link>
 
-					<div className="flex flex-col text-white mt-4">
-						<p>NASA ID: {item.data[0].nasa_id}</p>
-						<p>Title: {item.data[0].title}</p>
-						{/* <p>Photographer: {item.data[0].photographer}</p> */}
-						{/* <p>Location: {item.data[0].location}</p> */}
-						<p>Date Created: {item.data[0].date_created.slice(0, 10)}</p>
-						{/* <p>Description: {item.data[0].description}</p> */}
-					</div>
+					{details &&
+						<div className="flex flex-col text-white mt-4">
+							<p>NASA ID: {item.data[0].nasa_id}</p>
+							<p>Title: {item.data[0].title}</p>
+							{/* <p>Photographer: {item.data[0].photographer}</p> */}
+							{/* <p>Location: {item.data[0].location}</p> */}
+							<p>Date Created: {item.data[0].date_created.slice(0, 10)}</p>
+							{/* <p>Description: {item.data[0].description}</p> */}
+						</div>
+					}
+
+					<button
+						className="mt-6 border-red-300 border-2"
+						onClick={() => setDetails(true)}
+					>
+						Details
+					</button>
 				</div>
 			))}
 		</div>
