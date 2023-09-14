@@ -44,10 +44,10 @@ export default function NasaImageResults({ items }) {
 					<div className="flex flex-col text-white mt-4">
 						<p>NASA ID: {item.data[0].nasa_id}</p>
 						<p>Title: {item.data[0].title}</p>
-						<p>Photographer: {item.data[0].photographer}</p>
-						<p>Location: {item.data[0].location}</p>
+						{/* <p>Photographer: {item.data[0].photographer}</p> */}
+						{/* <p>Location: {item.data[0].location}</p> */}
 						<p>Date Created: {item.data[0].date_created.slice(0, 10)}</p>
-						<p>Description: {item.data[0].description}</p>
+						{/* <p>Description: {item.data[0].description}</p> */}
 					</div>
 				</div>
 			))}
