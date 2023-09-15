@@ -20,7 +20,8 @@ export default function NasaImageResults({ items }) {
 					mb-6
 				"
 		>
-			{items && items.map((item) => (
+
+			{!details && items && items.map((item) => (
 				<div
 					key={item.links[0].href}
 					className="flex flex-col items-center m-8"
@@ -64,6 +65,12 @@ export default function NasaImageResults({ items }) {
 					</button>
 				</div>
 			))}
+
+			{details &&
+				<div>
+					<p>NASA ID: {item.data[0].nasa_id}</p>
+				</div>
+			}
 		</div>
 	)
 
