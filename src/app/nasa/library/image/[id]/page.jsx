@@ -22,12 +22,12 @@ const getData = async (nasa_id) => {
 
 
 export default async function NasaImage({ params }) {
-	//console.log(`searchParams: ${JSON.stringify(searchParams)}`);
-	console.log(`nasa id: ${params.id}`);
+	console.log(`searchParams: ${JSON.stringify(params.item)}`);
+	//console.log(`nasa id: ${params.id}`);
 	const imageData = await getData(params.id);
 	//const image = await imageData.collection.items[1];
 
-	console.log(imageData);
+	//console.log(imageData);
 
 	return (
 		<div className='flex flex-col flex-1 w-screen m-4 border-2'>

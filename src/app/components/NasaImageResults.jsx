@@ -29,7 +29,11 @@ export default function NasaImageResults({ items }) {
 				>
 					{/* <Link href={{ pathname: '/about', query: { data: JSON.stringify(episode) } }}></Link> */}
 					<Link
-						href={`/nasa/library/image/${item.data[0].nasa_id}`}
+						// href={`/nasa/library/image/${item.data[0].nasa_id}`}
+						href={{ 
+							pathname: `/nasa/library/image/${item.data[0].nasa_id}`, 
+							query: { data: JSON.stringify(item) }
+						}}
 					>
 						<div className="flex justify-center h-48">
 							<Image
