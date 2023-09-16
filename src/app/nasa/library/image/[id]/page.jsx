@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import ImageDetailLayout from './layout';
 
 
 const getData = async (nasa_id) => {
@@ -30,11 +31,12 @@ export default async function NasaImage({ params }) {
 	//console.log(imageData);
 
 	return (
-		<div className='flex flex-col flex-1 w-screen m-4 border-2'>
+		<ImageDetailLayout>
+			<div className='flex flex-col flex-1 w-screen m-4 border-2'>
 
-			<h1 className='text-4xl text-center mt-8 mb-10'>NASA Image</h1>
-			<p>{JSON.stringify(imageData)}</p>
-			{/* <div className='flex flex-col items-center mt-10'>
+				<h1 className='text-4xl text-center mt-8 mb-10'>NASA Image</h1>
+				<p>{JSON.stringify(imageData)}</p>
+				{/* <div className='flex flex-col items-center mt-10'>
 				<div className="flex justify-center">
 					<Image
 						className="w-auto h-full"
@@ -57,6 +59,7 @@ export default async function NasaImage({ params }) {
 				</div>
 			</div> */}
 
-		</div>
+			</div>
+		</ImageDetailLayout>
 	);
 };

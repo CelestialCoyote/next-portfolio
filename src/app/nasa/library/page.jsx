@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import NASALibrarySearch from "@/app/components/NASALibrarySearch";
 import NasaImageResults from '@/app/components/NasaImageResults';
 
 
@@ -28,8 +29,9 @@ export default async function Library() {
 	if (!data) return <p>No photo data</p>
 
 	return (
-		<div
-			className="
+		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
+			<div
+				className="
 				flex
 				flex-col
 				items-center
@@ -37,15 +39,17 @@ export default async function Library() {
 				no-scrollbar
 				mb-6
 			"
-		>
-			<NasaImageResults items={items} />
+			>
+				<NASALibrarySearch />
+				<NasaImageResults items={items} />
 
-			<Link
-				className="mt-6 border-2 rounded-lg p-4"
-				href="/nasa">
-				Back to NASA API
-			</Link>
+				<Link
+					className="mt-6 border-2 rounded-lg p-4"
+					href="/nasa">
+					Back to NASA API
+				</Link>
 
+			</div>
 		</div>
 	);
 };
