@@ -5,8 +5,8 @@ import Image from 'next/image';
 
 const getData = async (nasa_id) => {
 	try {
-		//const response = await fetch(`https://images-api.nasa.gov/asset/${nasa_id}`);
-		const response = await fetch(`https://images-assets.nasa.gov/image/${nasa_id}/collection.json`);
+		const response = await fetch(`https://images-api.nasa.gov/asset/${nasa_id}`);
+		//const response = await fetch(`https://images-assets.nasa.gov/image/${nasa_id}/collection.json`);
 		//const response = await fetch(`http://images-assets.nasa.gov/image/${nasa_id}/metadata.json`);
 
 		if (!response.ok) {

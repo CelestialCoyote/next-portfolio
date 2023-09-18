@@ -5,8 +5,27 @@ import NasaImageResults from '@/app/components/NasaImageResults';
 
 
 const getLibraryData = async () => {
+	const generateRandomTopic = () => {
+		const topics = [
+			"neil armstrong",
+			"apollo",
+			"space shuttle",
+			"artemis",
+			"voyager",
+			"pluto",
+			"supernova"
+		]
+
+		return topics[Math.floor(Math.random() * (topics.length))]
+	}
+
+
 	try {
-		const response = await fetch("https://images-api.nasa.gov/search?media_type=image");
+		let query = generateRandomTopic();
+
+		const response = await fetch(
+			`https://images-api.nasa.gov/search?q=${query}&media_type=image`
+		);
 
 		if (!response.ok) {
 			throw new Error("Failed to fetch data");
