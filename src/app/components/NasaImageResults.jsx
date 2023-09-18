@@ -31,27 +31,18 @@ export default function NasaImageResults({ items }) {
 						key={item.links[0].href}
 						className="flex flex-col items-center m-8"
 					>
-						{/* <Link href={{ pathname: '/about', query: { data: JSON.stringify(episode) } }}></Link> */}
-						<Link
-							// href={`/nasa/library/image/${item.data[0].nasa_id}`}
-							href={{
-								pathname: `/nasa/library/image/${item.data[0].nasa_id}`,
-								query: { data: JSON.stringify(item) }
-							}}
-						>
-							<div className="flex justify-center h-48">
-								<Image
-									className="w-auto h-full"
-									src={item.links[0].href}
-									alt="thumbnail"
-									placeholder="blur"
-									blurDataURL={item.links[0].href}
-									width="0"
-									height="0"
-									sizes="100vh"
-								/>
-							</div>
-						</Link>
+						<div className="flex justify-center h-48">
+							<Image
+								className="w-auto h-full"
+								src={item.links[0].href}
+								alt="thumbnail"
+								placeholder="blur"
+								blurDataURL={item.links[0].href}
+								width="0"
+								height="0"
+								sizes="100vh"
+							/>
+						</div>
 
 						<button
 							className="mt-6 border-red-300 border-2"
