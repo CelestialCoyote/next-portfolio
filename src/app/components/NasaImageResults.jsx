@@ -22,12 +22,13 @@ export default function NasaImageResults({ items }) {
 					gap-8
 					overflow-y-auto
 					no-scrollbar
-					mb-6
+					m-6
 				"
 			>
 				{!details && items && items.map((item) => (
 					<div
-						className='
+						key={item.links[0].href}
+						className="
 							flex
 							flex-col
 							w-72
@@ -35,12 +36,11 @@ export default function NasaImageResults({ items }) {
 							rounded-lg
 							border-purple-400
 							border-2
-						'
-						key={item.links[0].href}
+						"
 					>
-						<div className="flex justify-center w-full h-48 bg-green-300">
+						<div className="flex justify-center w-full h-48">
 							<Image
-								className="w-auto h-full"
+								className="w-auto h-full rounded-2xl p-2"
 								src={item.links[0].href}
 								alt={`${item.data[0].title}`}
 								placeholder="blur"
@@ -62,12 +62,13 @@ export default function NasaImageResults({ items }) {
 							</div>
 							<button
 								className="
-										w-18
+										w-32
 										rounded-lg
 										cursor-pointer
 										hover:underline
 										border-purple-500
 										border-2
+										p-2
 									"
 								onClick={() => {
 									setDetails(true);
