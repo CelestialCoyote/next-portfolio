@@ -38,7 +38,7 @@ export default function NasaImageResults({ items }) {
 						'
 						key={item.links[0].href}
 					>
-						<div className='relative flex-shrink-0 w-full h-48 bg-gray-900'>
+						<div className="flex justify-center w-full h-48 bg-green-300">
 							<Image
 								className="w-auto h-full"
 								src={item.links[0].href}
@@ -59,47 +59,22 @@ export default function NasaImageResults({ items }) {
 								<p className='mt-2 line-clamp-3'>
 									{item.data[0].title}
 								</p>
-								<p
-									className='pb-4 text-primary-light lg:hover:underline cursor-pointer'
+								<button
+									className="
+										lg:hover:underline
+										cursor-pointer
+										mb-4
+									"
 									onClick={() => {
 										setDetails(true);
 										setImage(item);
 									}}
 								>
 									DETAILS
-								</p>
+								</button>
 							</div>
 						</div>
-						{/* </a> */}
-						{/* </Link> */}
 					</div>
-					// <div
-					// 	key={item.links[0].href}
-					// 	className="flex flex-col items-center m-8"
-					// >
-					// 	<div className="flex justify-center h-48">
-					// 		<Image
-					// 			className="w-auto h-full"
-					// 			src={item.links[0].href}
-					// 			alt="thumbnail"
-					// 			placeholder="blur"
-					// 			blurDataURL={item.links[0].href}
-					// 			width="0"
-					// 			height="0"
-					// 			sizes="100vh"
-					// 		/>
-					// 	</div>
-
-					// 	<button
-					// 		className="mt-6 border-red-300 border-2"
-					// 		onClick={() => {
-					// 			setDetails(true);
-					// 			setImage(item);
-					// 		}}
-					// 	>
-					// 		Details
-					// 	</button>
-					// </div>
 				))}
 
 				{details &&
@@ -107,19 +82,6 @@ export default function NasaImageResults({ items }) {
 					<div className='flex flex-col items-center justify-center'>
 						<div className='container rounded-lg lg:flex lg:bg-transparent'>
 							<div className='relative h-[50vh] mb-4 lg:mb-0 lg:h-auto lg:w-1/2 rounded-lg focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-0 focus-within:ring-indigo-400'>
-								<a
-									//href={image.items[0].href}
-									className='rounded-lg lg:hidden focus:ring-0 focus:ring-offset-0 focus:ring-transparent'
-								>
-									{/* <Image
-										src={image.links[0].href}
-										title={image.title}
-										className='object-contain object-center rounded-lg lg:object-top'
-										layout='fill'
-										priority={true}
-										loading='eager'
-										quality={100}
-									/> */}
 									<Image
 										className="w-auto h-full"
 										src={image.links[0].href}
@@ -131,21 +93,8 @@ export default function NasaImageResults({ items }) {
 										sizes="100vh"
 										priority={true}
 									/>
-								</a>
-								{/* <div className='hidden lg:sticky lg:block lg:self-start lg:top-10'>
-									<a
-										href={image.href}
-										className='flex-shrink rounded-lg focus:ring-0 focus:ring-offset-0 focus:ring-transparent'
-									>
-										<img
-											src={image.links[0].href}
-											title={image.data[0].title}
-											loading='eager'
-											className='self-center mx-auto rounded-lg'
-										/>
-									</a>
-								</div> */}
 							</div>
+							
 							<div className='p-4 overflow-hidden bg-black lg:bg-transparent lg:pt-0 lg:w-1/2'>
 								<div>
 									<p className='text-2xl font-bold'>
