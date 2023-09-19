@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import NASALibrarySearch from "@/app/components/NASALibrarySearch";
 import NasaImageResults from '@/app/components/NasaImageResults';
 
 
@@ -59,15 +56,7 @@ export default async function Library() {
 				mb-6
 			"
 			>
-				{/* <NASALibrarySearch /> */}
 				<NasaImageResults items={items} />
-
-				<Link
-					className="mt-6 border-2 rounded-lg p-4"
-					href="/nasa">
-					Back to NASA API
-				</Link>
-
 			</div>
 		</div>
 	);
