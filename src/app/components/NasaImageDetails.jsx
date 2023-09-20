@@ -11,10 +11,11 @@ export default function NasaImageDetails({ image, setDetails }) {
 						flex
 						w-1/2
 						items-center
+						p-6
 					"
 				>
 					<Image
-						className="w-full h-auto"
+						className="w-full h-auto rounded-xl"
 						src={image.links[0].href}
 						alt="thumbnail"
 						placeholder="blur"
@@ -28,70 +29,84 @@ export default function NasaImageDetails({ image, setDetails }) {
 				<div
 					className="
 						w-1/2
-						overflow-hidden 
+						overflow-hidden
+						p-6
 					"
 				>
-					<div className="">
-						<p className='text-2xl font-bold'>
-							{image.data[0].title}
-						</p>
+					<div className="text-2xl font-bold">
+						{image.data[0].title}
 					</div>
-					<div>
-						<p className='py-2 font-light text-gray-500'>
-							{image.data[0].date_created.slice(0, 10)}
-						</p>
+					<div className="mt-4 mb-2">
+						{image.data[0].date_created.slice(0, 10)}
 					</div>
-					<hr className='pt-1 pb-2 border-gray-900' />
-					<div>
-						<p className='inline mr-1 text-lg text-gray-400'>Keywords:</p>
-						<div className='inline'>
-							{image?.keywords?.map((keyword, index) => (
-								<Link href={`/images?q=${keyword}`} key={index}>
-									<a className='text-lg rounded-md cursor-pointer text-primary-light hover:underline'>
-										{keyword},{' '}
-									</a>
-								</Link>
-							))}
-						</div>
-					</div>
-					<div className='py-4'>
+
+					<hr className="pt-1 pb-2 border-gray-900" />
+
+					<div className="flex flex-col gap-2">
 						<div>
 							<p className='inline text-lg text-gray-400'>
-								Secondary Creator:{' '}
+								Keywords:
+							</p>
+							<div className='inline'>
+								{image?.keywords?.map((keyword, index) => (
+									<Link href={`/images?q=${keyword}`} key={index}>
+										<a className='text-lg rounded-md cursor-pointer text-primary-light hover:underline'>
+											{keyword},{' '}
+										</a>
+									</Link>
+								))}
+							</div>
+						</div>
+						<div className="">
+							<div>
+								<p className="inline text-lg text-gray-400">
+									Secondary Creator:{' '}
+								</p>
+								<p className='inline'>
+									{image.data[0].secondary_creator}
+								</p>
+							</div>
+						</div>
+
+						<div>
+							<p className='inline text-lg text-gray-400'>
+								NASA ID:
 							</p>
 							<p className='inline'>
-								{image.data[0].secondary_creator}
+								{image.data[0].nasa_id}
 							</p>
 						</div>
-					</div>
-					<div className='pb-4'>
+
 						<div>
-							<p className='inline text-lg text-gray-400'>NASA ID: </p>
-							<p className='inline'>{image.data[0].nasa_id}</p>
+							<p className='inline text-lg text-gray-400'>
+								Center:
+							</p>
+							<p className='inline'>
+								{image.data[0].center}
+							</p>
 						</div>
+
 					</div>
-					<div className='pb-4'>
-						<div>
-							<p className='inline text-lg text-gray-400'>Center: </p>
-							<p className='inline'>{image.data[0].center}</p>
-						</div>
-					</div>
-					
+
 					<hr className='pt-1 pb-2 border-gray-900' />
-					
-					<div className="h-96 p-6 overflow-y-scroll">
+
+					<div className="h-96 overflow-y-scroll no-scrollbar break-words">
 						{image.data[0].description}
 					</div>
 				</div>
 			</div>
 
-			<button
-				onClick={() => {
-					setDetails(false);
-				}}
-			>
-				Back to Search
-			</button>
+			<div className="flex justify-center mt-6 mb-6">
+				<button
+					className="border-2 w-36 p-2 rounded-xl"
+					onClick={() => {
+						setDetails(false);
+					}}
+				>
+					Back to Search
+				</button>
+			</div>
+
 		</div>
 	)
 }
