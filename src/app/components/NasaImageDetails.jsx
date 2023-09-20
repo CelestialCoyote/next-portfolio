@@ -4,30 +4,17 @@ import Image from "next/image";
 export default function NasaImageDetails({ image, setDetails }) {
 
 	return (
-		<div className='flex flex-col flex-1 bg-slate-600'>
-			{/* <div className="container rounded-lg"> */}
-			<div className="w-full">
+		<div className='flex flex-col bg-slate-600 m-2'>
+			<div className="flex gap-6">
 				<div
-					// className="
-					// 	relative
-					// 	h-[50vh]
-					// 	mb-4
-					// 	lg:mb-0
-					// 	lg:h-auto
-					// 	lg:w-1/2
-					// 	rounded-lg
-					// 	focus-within:outline-none
-					// 	focus-within:ring-2
-					// 	focus-within:ring-offset-0
-					// 	focus-within:ring-indigo-400
-					// "
 					className="
-						h-[50vh]
-						mb-4
+						flex
+						w-1/2
+						items-center
 					"
 				>
 					<Image
-						className="w-auto h-full"
+						className="w-full h-auto"
 						src={image.links[0].href}
 						alt="thumbnail"
 						placeholder="blur"
@@ -40,17 +27,13 @@ export default function NasaImageDetails({ image, setDetails }) {
 
 				<div
 					className="
-						p-4
+						w-1/2
 						overflow-hidden 
-					
-						lg:bg-transparent
-						lg:pt-0
-						lg:w-1/2
 					"
 				>
-					<div>
+					<div className="">
 						<p className='text-2xl font-bold'>
-							{image.title}
+							{image.data[0].title}
 						</p>
 					</div>
 					<div>
@@ -93,15 +76,15 @@ export default function NasaImageDetails({ image, setDetails }) {
 							<p className='inline'>{image.data[0].center}</p>
 						</div>
 					</div>
+					
 					<hr className='pt-1 pb-2 border-gray-900' />
-					<div>
-						<p className='text-lg leading-loose'>
-							{image.data[0].description}
-						</p>
+					
+					<div className="h-96 p-6 overflow-y-scroll">
+						{image.data[0].description}
 					</div>
 				</div>
 			</div>
-			
+
 			<button
 				onClick={() => {
 					setDetails(false);
