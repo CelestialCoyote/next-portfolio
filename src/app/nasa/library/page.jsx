@@ -40,7 +40,6 @@ const getLibraryData = async () => {
 export default async function Library() {
 	const data = await getLibraryData();
 	const items = await data.collection.items;
-	//console.log(items)
 
 	if (!data) return <p>No photo data</p>
 
