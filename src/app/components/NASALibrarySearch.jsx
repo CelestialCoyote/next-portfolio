@@ -1,20 +1,27 @@
 "use client";
 
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 
 
-export default function NASALibrarySearch() {
+export default function NASALibrarySearch({ getSearchResults }) {
+	//const [query, setQuery] = useState('')
 	const [search, setSearch] = useState("");
-	const router = useRouter();
+	//const router = useRouter();
 
-	function handleSubmit(e) {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (!search) return;
-		
-		router.push(`/nasa/library/search/${search}`);
+		//if (!search) return;
+
+		//router.push(`/nasa/library/search/${search}`);
+		//router.push(`/nasa/library/${search}`);
+
+		const response = await fetch(`/api/nasa/library?query=${search}`)
+
+		const data = await response.json()
+
+		getSearchResults(data);
 	};
 
 	return (
