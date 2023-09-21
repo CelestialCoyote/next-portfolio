@@ -12,8 +12,9 @@ export default function NasaImageResults({ items }) {
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center bg-green-700">
-			{!details && <NASALibrarySearch />}
+			{/* {!details && <NASALibrarySearch getSearchResults={(results) => setImages(results)} />} */}
 
+			{console.log(items)}
 			<div
 				className="
 					flex
@@ -25,7 +26,8 @@ export default function NasaImageResults({ items }) {
 					m-6
 				"
 			>
-				{!details && items && items.map((item) => (
+				{/* {!details && items && items.map((item) => ( */}
+				{items.map((item) => (
 					<div
 						key={item.links[0].href}
 						className="

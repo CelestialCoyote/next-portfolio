@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import NASALibrarySearch from "@/app/components/NASALibrarySearch";
 import NasaImageResults from '@/app/components/NasaImageResults';
 
 
@@ -47,13 +48,13 @@ export default function Library() {
 	//if (!data) return <p>No photo data</p>
 
 
-	const [images, setImages] = useState([]);
+	const [items, setItems] = useState([]);
 
 	useEffect(() => {
 		const getImages = async () => {
 			const response = await fetch('/api/nasa/library');
 			const data = await response.json();
-			setImages(data.collection.items);
+			setItems(data.collection.items);
 		}
 
 		getImages();
@@ -73,7 +74,8 @@ export default function Library() {
 				mb-6
 			"
 			>
-				<NasaImageResults items={images} />
+				<NASALibrarySearch getSearchResults={(results) => setItems(results)}/>
+				<NasaImageResults items={items} />
 			</div>
 		</div>
 	);
