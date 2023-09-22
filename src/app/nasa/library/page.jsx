@@ -1,64 +1,64 @@
-"use client";
+//"use client";
 
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import NASALibrarySearch from "@/app/components/NASALibrarySearch";
-import NasaImageResults from '@/app/components/NasaImageResults';
+import NasaImageResults from '@/app/components/NasaImageResults_old';
 
 
-// const getLibraryData = async () => {
-// 	const generateRandomTopic = () => {
-// 		const topics = [
-// 			"neil armstrong",
-// 			"apollo",
-// 			"space shuttle",
-// 			"artemis",
-// 			"voyager",
-// 			"pluto",
-// 			"supernova"
-// 		]
+const getLibraryData = async () => {
+	const generateRandomTopic = () => {
+		const topics = [
+			"neil armstrong",
+			"apollo",
+			"space shuttle",
+			"artemis",
+			"voyager",
+			"pluto",
+			"supernova"
+		]
 
-// 		return topics[Math.floor(Math.random() * (topics.length))]
-// 	}
-
-
-// 	try {
-// 		let query = generateRandomTopic();
-
-// 		const response = await fetch(
-// 			`https://images-api.nasa.gov/search?q=${query}&media_type=image`
-// 		);
-
-// 		if (!response.ok) {
-// 			throw new Error("Failed to fetch data");
-// 		} else {
-// 			console.log("data fetched");
-// 		};
-
-// 		return response.json();
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// };
+		return topics[Math.floor(Math.random() * (topics.length))]
+	}
 
 
-export default function Library() {
-	//const data = await getLibraryData();
-	//const items = await data.collection.items;
+	try {
+		let query = generateRandomTopic();
 
-	//if (!data) return <p>No photo data</p>
+		const response = await fetch(
+			`https://images-api.nasa.gov/search?q=${query}&media_type=image`
+		);
+
+		if (!response.ok) {
+			throw new Error("Failed to fetch data");
+		} else {
+			console.log("data fetched");
+		};
+
+		return response.json();
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 
-	const [items, setItems] = useState([]);
+export default async function Library() {
+	const data = await getLibraryData();
+	const items = await data.collection.items;
 
-	useEffect(() => {
-		const getImages = async () => {
-			const response = await fetch('/api/nasa/library');
-			const data = await response.json();
-			setItems(data.collection.items);
-		}
+	if (!data) return <p>No photo data</p>
 
-		getImages();
-	}, []);
+
+	// const [items, setItems] = useState([]);
+
+	// useEffect(() => {
+	// 	const getImages = async () => {
+	// 		const response = await fetch('/api/nasa/library');
+	// 		const data = await response.json();
+	// 		setItems(data.collection.items);
+	// 	}
+
+	// 	getImages();
+	// }, []);
 
 	
 
@@ -74,7 +74,7 @@ export default function Library() {
 				mb-6
 			"
 			>
-				<NASALibrarySearch getSearchResults={(results) => setItems(results)}/>
+				{/* <NASALibrarySearch getSearchResults={(results) => setItems(results)}/> */}
 				<NasaImageResults items={items} />
 			</div>
 		</div>

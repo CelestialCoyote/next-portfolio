@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 
-
 async function fetchImages() {
     //const response = await fetch(`https://images-api.nasa.gov/search?media_type=image&q=${searchParams}`, {
 	const response = await fetch(`https://images-api.nasa.gov/search?media_type=image`, {
