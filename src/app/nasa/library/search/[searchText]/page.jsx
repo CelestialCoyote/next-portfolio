@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import NasaImageResults from '@/app/components/Nasa/NasaImageResults';
 
 
 export default async function SearchLibrary({ params }) {
@@ -15,31 +16,19 @@ export default async function SearchLibrary({ params }) {
 	const items = await data.collection.items;
 
 	return (
-		<div className='grid grid-cols-4 gap-4'>
-			{items && items.map((preview) => (
-
-				<div
-					key={preview.data[0].nasa_id}
-					className="mb-8"
-				>
-					<div className="flex justify-center h-72">
-						<Image
-							className="w-auto h-full"
-							src={preview.links[0].href}
-							alt="thumbnail"
-							placeholder="blur"
-							blurDataURL={preview.links[0].href}
-							width="0"
-							height="0"
-							sizes="100vh"
-						/>
-					</div>
-
-					<div className='text-white mt-4'>
-						NASA ID: {preview.data[0].nasa_id}
-					</div>
-				</div>
-			))}
+		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
+			<div
+				className="
+				flex
+				flex-col
+				items-center
+				overflow-y-auto
+				no-scrollbar
+				mb-6
+			"
+			>
+				<NasaImageResults items={items} />
+			</div>
 		</div>
 	);
 };

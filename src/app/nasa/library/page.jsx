@@ -1,8 +1,4 @@
-//"use client";
-
-//import { useState, useEffect } from "react";
-import NASALibrarySearch from "@/app/components/NASALibrarySearch";
-import NasaImageResults from '@/app/components/NasaImageResults_old';
+import NasaImageInitialResults from "@/app/components/Nasa/NasaImageInitialResults";
 
 
 const getLibraryData = async () => {
@@ -47,21 +43,6 @@ export default async function Library() {
 
 	if (!data) return <p>No photo data</p>
 
-
-	// const [items, setItems] = useState([]);
-
-	// useEffect(() => {
-	// 	const getImages = async () => {
-	// 		const response = await fetch('/api/nasa/library');
-	// 		const data = await response.json();
-	// 		setItems(data.collection.items);
-	// 	}
-
-	// 	getImages();
-	// }, []);
-
-	
-
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
 			<div
@@ -74,8 +55,7 @@ export default async function Library() {
 				mb-6
 			"
 			>
-				{/* <NASALibrarySearch getSearchResults={(results) => setItems(results)}/> */}
-				<NasaImageResults items={items} />
+				<NasaImageInitialResults items={items} />
 			</div>
 		</div>
 	);

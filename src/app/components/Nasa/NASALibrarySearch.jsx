@@ -1,24 +1,27 @@
 "use client";
 
-import { useState } from "react";
-//import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 export default function NASALibrarySearch({ getSearchResults }) {
-	//const [query, setQuery] = useState('')
 	const [search, setSearch] = useState("");
-	//const router = useRouter();
+
+
+	useEffect(() => {
+		const getImages = async () => {
+			const response = await fetch('/api/nasa/library');
+			const data = await response.json();
+			console.log(data);
+			setItems(data.collection.items);
+		}
+
+		getImages();
+	}, []);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		//if (!search) return;
-
-		//router.push(`/nasa/library/search/${search}`);
-		//router.push(`/nasa/library/${search}`);
-
 		const response = await fetch(`/api/nasa/library?query=${search}`)
-
 		const data = await response.json()
 
 		getSearchResults(data);

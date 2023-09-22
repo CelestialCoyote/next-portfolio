@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import NASALibrarySearch from "./NASALibrarySearch";
+import NASALibraryInitialSearch from "./NASALibraryInitialSearch";
 import NasaImageDetails from "./NasaImageDetails";
 
 
@@ -13,7 +12,7 @@ export default function NasaImageResults({ items }) {
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
-			{!details && <NASALibrarySearch />}
+			{!details && <NASALibraryInitialSearch />}
 
 			<div
 				className="
@@ -81,33 +80,6 @@ export default function NasaImageResults({ items }) {
 							</button>
 						</div>
 					</div>
-					// <div
-					// 	key={item.links[0].href}
-					// 	className="flex flex-col items-center m-8"
-					// >
-					// 	<div className="flex justify-center h-48">
-					// 		<Image
-					// 			className="w-auto h-full"
-					// 			src={item.links[0].href}
-					// 			alt="thumbnail"
-					// 			placeholder="blur"
-					// 			blurDataURL={item.links[0].href}
-					// 			width="0"
-					// 			height="0"
-					// 			sizes="100vh"
-					// 		/>
-					// 	</div>
-
-					// 	<button
-					// 		className="mt-6 border-red-300 border-2"
-					// 		onClick={() => {
-					// 			setDetails(true);
-					// 			setImage(item);
-					// 		}}
-					// 	>
-					// 		Details
-					// 	</button>
-					// </div>
 				))}
 
 				{details && <NasaImageDetails image={image} setDetails={setDetails} />}

@@ -11,10 +11,9 @@ export default function NasaImageResults({ items }) {
 	const [image, setImage] = useState([]);
 
 	return (
-		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center bg-green-700">
-			{/* {!details && <NASALibrarySearch getSearchResults={(results) => setImages(results)} />} */}
+		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
+			{!details && <NASALibrarySearch />}
 
-			{console.log(items)}
 			<div
 				className="
 					flex
@@ -23,22 +22,22 @@ export default function NasaImageResults({ items }) {
 					gap-8
 					overflow-y-auto
 					no-scrollbar
-					m-6
+					mb-6
 				"
 			>
-				{/* {!details && items && items.map((item) => ( */}
-				{items.map((item) => (
+
+				{!details && items && items.map((item) => (
 					<div
 						key={item.links[0].href}
 						className="
-							flex
-							flex-col
-							w-72
-							overflow-hidden
-							rounded-lg
-							border-purple-400
-							border-2
-						"
+						flex
+						flex-col
+						w-72
+						overflow-hidden
+						rounded-lg
+						border-purple-400
+						border-2
+					"
 					>
 						<div className="flex justify-center w-full h-48">
 							<Image
@@ -50,7 +49,7 @@ export default function NasaImageResults({ items }) {
 								width="0"
 								height="0"
 								sizes="100vh"
-								// priority={true}
+							// priority={true}
 							/>
 						</div>
 						<div className='flex flex-col justify-between items-center h-48 p-4'>
@@ -64,14 +63,14 @@ export default function NasaImageResults({ items }) {
 							</div>
 							<button
 								className="
-										w-32
-										rounded-lg
-										cursor-pointer
-										hover:underline
-										border-purple-500
-										border-2
-										p-2
-									"
+									w-32
+									rounded-lg
+									cursor-pointer
+									hover:underline
+									border-purple-500
+									border-2
+									p-2
+								"
 								onClick={() => {
 									setDetails(true);
 									setImage(item);
