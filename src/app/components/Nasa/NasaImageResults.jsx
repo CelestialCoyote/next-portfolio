@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import NASALibrarySearch from "./NASALibrarySearch";
+//import NASALibrarySearch from "./NASAImageSearch";
 import NasaImageDetails from "./NasaImageDetails";
 
 

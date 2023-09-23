@@ -27,7 +27,7 @@ export default function Nasa() {
 				<div className="flex flex-col">
 					<Link
 						className="text-2xl mb-6 text-cyan-500"
-						href="/nasa/library"
+						href="/nasa/image"
 					>
 						Image and Video Library
 					</Link>

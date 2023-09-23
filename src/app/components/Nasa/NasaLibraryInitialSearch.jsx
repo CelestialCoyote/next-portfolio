@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
-export default function NASALibrarySearch() {
+export default function NASALibraryInitialSearch() {
 	const [search, setSearch] = useState("");
 	const router = useRouter();
 

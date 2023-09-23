@@ -3,14 +3,16 @@
 import { useState } from "react";
 
 
-export default function NASALibrarySearch({ getSearchResults }) {
+export default function NASAImageSearch({ getSearchResults }) {
 	const [query, setQuery] = useState("");
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const response = await fetch(`/api/nasa/library?query=${query}`)
-		const data = await response.json()
+		const response = await fetch(`/api/nasa/image?query=${query}`)
+		const data = await response.json();
+
+		console.log(`searchData: ${JSON.stringify(data)}`);
 
 		getSearchResults(data);
 	};
