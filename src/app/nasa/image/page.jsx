@@ -14,7 +14,7 @@ export default function NasaImage() {
 			const data = await response.json();
 			
 			console.log(`search data: ${data}`);
-			//setItems(data.collection.items);
+			setItems(data.collection.items);
 		}
 
 		getData();

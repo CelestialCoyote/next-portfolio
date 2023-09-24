@@ -1,4 +1,4 @@
-import NasaImageInitialResults from "@/app/components/Nasa/NasaImageInitialResults";
+import NasaImageInitialResults from "@/app/components/Nasa/NasaLibraryResults";
 
 
 const getLibraryData = async () => {

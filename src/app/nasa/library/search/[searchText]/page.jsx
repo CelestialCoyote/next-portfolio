@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import NASALibrarySearch from '@/app/components/Nasa/NasaLibraryInitialSearch';
+import NASALibrarySearch from '@/app/components/Nasa/NasaLibraryISearch';
 import NasaImageResults from '@/app/components/Nasa/NasaImageResults';
 
 
