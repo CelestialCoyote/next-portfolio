@@ -13,7 +13,7 @@ export default function NASALibrarySearch() {
 
 		if (!search) return;
 
-		router.push(`/nasa/library/${search}`);
+		router.push(`/nasa/library/search/${search}`);
 	};
 
 	return (

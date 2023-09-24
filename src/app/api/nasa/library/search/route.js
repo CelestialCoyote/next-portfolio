@@ -20,12 +20,11 @@ async function fetchImages() {
 export async function GET(request) {
     const images = await fetchImages();
     const { searchParams } = new URL(request.url);
-    console.log(searchParams.get('query'))
-    const query = searchParams.get('query');
-
-    // const response = coins.data.coins.filter((coin) => {
-    //     return coin.name.toLowerCase().includes(query.toLowerCase()) || coin.symbol.toLowerCase().includes(query.toLowerCase())
-    // })
+    
+	
+	console.log(`query from search: ${searchParams.get('query')}`);
+	console.log(`fecthed images: ${images}`);
+    //const query = searchParams.get('query');
 
     return NextResponse.json(images);
 }

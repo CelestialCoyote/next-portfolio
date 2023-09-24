@@ -1,10 +1,8 @@
-"use client";
-
 import NasaImageResults from '@/app/components/Nasa/NasaImageResults';
 
 
 export default async function SearchLibrary({ params }) {
-	const response = await fetch(`/api/nasa/library&query=${params.searchTerm}`);
+	const response = await fetch(`https://images-api.nasa.gov/search?media_type=image&q=${params.searchParams}`);
 
 	// if (!response.ok) {
 	// 	throw new Error("Error fetching data");

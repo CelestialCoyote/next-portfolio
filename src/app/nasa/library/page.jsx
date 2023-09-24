@@ -1,4 +1,5 @@
-import NasaImageInitialResults from "@/app/components/Nasa/NasaLibraryResults";
+import NASALibrarySearch from "@/app/components/Nasa/NasaLibraryISearch";
+import NasaImageResults from "@/app/components/Nasa/NasaImageResults";
 
 
 const getLibraryData = async () => {
@@ -16,7 +17,6 @@ const getLibraryData = async () => {
 		return topics[Math.floor(Math.random() * (topics.length))]
 	}
 
-
 	try {
 		let query = generateRandomTopic();
 
@@ -27,7 +27,7 @@ const getLibraryData = async () => {
 		if (!response.ok) {
 			throw new Error("Failed to fetch data");
 		} else {
-			console.log("data fetched");
+			console.log("From initial page load data fetched");
 		};
 
 		return response.json();
@@ -55,7 +55,8 @@ export default async function Library() {
 				mb-6
 			"
 			>
-				<NasaImageInitialResults items={items} />
+				{/* <NASALibrarySearch /> */}
+				<NasaImageResults items={items} />
 			</div>
 		</div>
 	);
