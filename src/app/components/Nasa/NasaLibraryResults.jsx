@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import NASALibraryInitialSearch from "./NasaLibraryISearch";
+import NASALibrarySearch from "./NasaLibraryISearch";
 import NasaImageDetails from "./NasaImageDetails";
 
 
@@ -12,7 +12,7 @@ export default function NasaImageResults({ items }) {
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
-			{!details && <NASALibraryInitialSearch />}
+			{!details && <NASALibrarySearch />}
 
 			<div
 				className="

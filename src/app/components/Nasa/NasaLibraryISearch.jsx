@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
-export default function NASALibraryInitialSearch() {
+export default function NASALibrarySearch() {
 	const [search, setSearch] = useState("");
 	const router = useRouter();
 
@@ -13,7 +13,7 @@ export default function NASALibraryInitialSearch() {
 
 		if (!search) return;
 
-		router.push(`/nasa/library/search/${search}`);
+		router.push(`/nasa/library/${search}`);
 	};
 
 	return (
