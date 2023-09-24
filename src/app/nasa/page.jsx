@@ -24,14 +24,14 @@ export default function Nasa() {
 					</div>
 				</div>
 
-				<div className="flex flex-col">
+				{/* <div className="flex flex-col">
 					<Link
 						className="text-2xl mb-6 text-cyan-500"
 						href="/nasa/image"
 					>
 						Image Library (useEffect)
 					</Link>
-				</div>
+				</div> */}
 
 				<div className="flex flex-col">
 					<Link

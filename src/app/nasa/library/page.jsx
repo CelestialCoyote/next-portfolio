@@ -1,5 +1,4 @@
-import NASALibrarySearch from "@/app/components/Nasa/NasaLibraryISearch";
-import NasaImageResults from "@/app/components/Nasa/NasaImageResults";
+import NasaLibraryResults from "@/app/components/Nasa/NasaLibraryResults";
 
 
 const getLibraryData = async () => {
@@ -55,8 +54,7 @@ export default async function Library() {
 				mb-6
 			"
 			>
-				{/* <NASALibrarySearch /> */}
-				<NasaImageResults items={items} />
+				<NasaLibraryResults items={items} />
 			</div>
 		</div>
 	);

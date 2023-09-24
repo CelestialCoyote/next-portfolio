@@ -2,11 +2,13 @@ import NasaImageResults from '@/app/components/Nasa/NasaImageResults';
 
 
 export default async function SearchLibrary({ params }) {
-	const response = await fetch(`https://images-api.nasa.gov/search?media_type=image&q=${params.searchParams}`);
+	const response = await fetch(`https://images-api.nasa.gov/search?media_type=image&q=${params.searchTerm}`);
 
-	// if (!response.ok) {
-	// 	throw new Error("Error fetching data");
-	// }
+	console.log(`searchParams: ${params.searchTerm}`)
+
+	if (!response.ok) {
+		throw new Error("Error fetching data");
+	}
 
 	const data = await response.json();
 	const items = data.collection.items;

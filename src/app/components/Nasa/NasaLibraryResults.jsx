@@ -2,17 +2,17 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import NASALibrarySearch from "./NasaLibraryISearch";
+import NasaLibrarySearch from "./NasaLibraryISearch";
 import NasaImageDetails from "./NasaImageDetails";
 
 
-export default function NasaImageResults({ items }) {
+export default function NasaLibraryResults({ items }) {
 	const [details, setDetails] = useState(false);
 	const [image, setImage] = useState([]);
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
-			{!details && <NASALibrarySearch />}
+			{!details && <NasaLibrarySearch />}
 
 			<div
 				className="
