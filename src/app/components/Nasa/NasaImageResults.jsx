@@ -6,13 +6,17 @@ import NasaLibrarySearch from "./NasaLibraryISearch";
 import NasaImageDetails from "./NasaImageDetails";
 
 
-export default function NasaImageResults({ items }) {
+export default function NasaImageResults({ items, search }) {
 	const [details, setDetails] = useState(false);
 	const [image, setImage] = useState([]);
 
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
 			{!details && <NasaLibrarySearch />}
+
+			<label className="text-2xl text-purple-500 mb-8">
+				{`Showing results of search for "${search}"`}
+			</label>
 
 			<div
 				className="
@@ -25,7 +29,6 @@ export default function NasaImageResults({ items }) {
 					mb-6
 				"
 			>
-
 				{!details && items && items.map((item) => (
 					<div
 						key={item.links[0].href}

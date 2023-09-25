@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
-export default function NASALibrarySearch() {
+export default function NasaLibrarySearch() {
 	const [search, setSearch] = useState("");
 	const router = useRouter();
 
@@ -13,7 +13,7 @@ export default function NASALibrarySearch() {
 
 		if (!search) return;
 
-		router.push(`/nasa/library/search/${search}`);
+		router.push(`/nasa/library/${search}`);
 	};
 
 	return (
@@ -22,16 +22,34 @@ export default function NASALibrarySearch() {
 			className="flex w-full px-12 mb-8 gap-12 mt-6"
 		>
 			<input
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
+				className="
+					w-full
+					h-14
+					pl-6
+					rounded-lg
+					placeholder-purple-500
+					outline-none
+					bg-transparent
+					border-purple-400
+					border-2
+				"
 				type="text"
 				placeholder="subject i.e. Space Shuttle"
-				className="w-full h-14 pl-6 rounded-lg placeholder-gary-500 outline-none bg-transparent border-red-300 border-2"
+				value={search}
+				onChange={(e) => setSearch(e.target.value)}
 			/>
 			<button
-				disabled={!search}
+				className="
+					w-24
+					rounded-lg 
+					text-purple-500
+					border-purple-400
+					disabled:text-gray-700
+					disabled:border-gray-700
+					border-2
+				"
 				type="submit"
-				className="w-24 rounded-lg text-amber-600 disabled:text-gray-400 border-green-300 border-2"
+				disabled={!search}
 			>
 				Search
 			</button>

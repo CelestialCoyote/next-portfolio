@@ -25,7 +25,7 @@ export default async function SearchLibrary({ params }) {
 				mb-6
 			"
 			>
-				<NasaImageResults items={items} />
+				<NasaImageResults items={items} search={params.searchTerm} />
 			</div>
 		</div>
 	);

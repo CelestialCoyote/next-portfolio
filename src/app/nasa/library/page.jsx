@@ -1,23 +1,24 @@
 import NasaLibraryResults from "@/app/components/Nasa/NasaLibraryResults";
+import NasaImageResults from "@/app/components/Nasa/NasaImageResults";
 
 
-const getLibraryData = async () => {
-	const generateRandomTopic = () => {
-		const topics = [
-			"neil armstrong",
-			"apollo",
-			"space shuttle",
-			"artemis",
-			"voyager",
-			"pluto",
-			"supernova"
-		]
+const getLibraryData = async (query) => {
+	// const generateRandomTopic = () => {
+	// 	const topics = [
+	// 		"neil armstrong",
+	// 		"apollo",
+	// 		"space shuttle",
+	// 		"artemis",
+	// 		"voyager",
+	// 		"pluto",
+	// 		"supernova"
+	// 	]
 
-		return topics[Math.floor(Math.random() * (topics.length))]
-	}
+	// 	return topics[Math.floor(Math.random() * (topics.length))]
+	// }
 
 	try {
-		let query = generateRandomTopic();
+		//let query = generateRandomTopic();
 
 		const response = await fetch(
 			`https://images-api.nasa.gov/search?q=${query}&media_type=image`
@@ -37,7 +38,22 @@ const getLibraryData = async () => {
 
 
 export default async function Library() {
-	const data = await getLibraryData();
+	const generateRandomTopic = () => {
+		const topics = [
+			"neil armstrong",
+			"apollo",
+			"space shuttle",
+			"artemis",
+			"voyager",
+			"pluto",
+			"supernova"
+		]
+
+		return topics[Math.floor(Math.random() * (topics.length))]
+	}
+
+	const query = generateRandomTopic();
+	const data = await getLibraryData(query);
 	const items = await data.collection.items;
 
 	if (!data) return <p>No photo data</p>
@@ -54,7 +70,7 @@ export default async function Library() {
 				mb-6
 			"
 			>
-				<NasaLibraryResults items={items} />
+				<NasaImageResults items={items} search={query} />
 			</div>
 		</div>
 	);
