@@ -14,7 +14,7 @@ export default function NasaImageResults({ items, search }) {
 		<div className="flex flex-col h-[calc(100vh-5rem)] w-full items-center">
 			{!details && <NasaLibrarySearch />}
 
-			<label className="text-2xl text-purple-500 mb-8">
+			<label className="text-2xl text-purple-500 mt-4 mb-8">
 				{`Showing results of search for "${search}"`}
 			</label>
 

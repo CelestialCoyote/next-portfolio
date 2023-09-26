@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function NasaImageDetails({ image, setDetails }) {
 
 	return (
-		<div className='flex flex-col bg-slate-600 m-2'>
+		<div className="flex flex-col bg-slate-600 rounded-2xl m-2">
 			<div className="flex gap-6">
 				<div
 					className="
@@ -28,6 +28,8 @@ export default function NasaImageDetails({ image, setDetails }) {
 
 				<div
 					className="
+						flex
+						flex-col
 						w-1/2
 						overflow-hidden
 						p-6
@@ -90,7 +92,7 @@ export default function NasaImageDetails({ image, setDetails }) {
 
 					<hr className='pt-1 pb-2 border-gray-900' />
 
-					<div className="h-96 overflow-y-scroll no-scrollbar break-words">
+					<div className="overflow-y-scroll no-scrollbar break-words">
 						{image.data[0].description}
 					</div>
 				</div>

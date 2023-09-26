@@ -1,25 +1,8 @@
-import NasaLibraryResults from "@/app/components/Nasa/NasaLibraryResults";
 import NasaImageResults from "@/app/components/Nasa/NasaImageResults";
 
 
 const getLibraryData = async (query) => {
-	// const generateRandomTopic = () => {
-	// 	const topics = [
-	// 		"neil armstrong",
-	// 		"apollo",
-	// 		"space shuttle",
-	// 		"artemis",
-	// 		"voyager",
-	// 		"pluto",
-	// 		"supernova"
-	// 	]
-
-	// 	return topics[Math.floor(Math.random() * (topics.length))]
-	// }
-
 	try {
-		//let query = generateRandomTopic();
-
 		const response = await fetch(
 			`https://images-api.nasa.gov/search?q=${query}&media_type=image`
 		);
