@@ -7,7 +7,7 @@ export default async function Epic() {
 			<div>
 				Mapbox
 			</div>
-			<div>
+			<div className="m-6">
 				<TestMap />
 			</div>
 		</div>
