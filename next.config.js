@@ -12,6 +12,17 @@ const nextConfig = {
 		path: "/_next/image",
 		loader: "default"
 	},
+	webpack(config) {
+		config.module.rules.push({
+		  test: /\.geojson$/,
+		  use: ["json-loader"]
+		});
+	
+		return config;
+	  },
+	  devIndicators: {
+		autoPrerender: false,
+	  },
 };
 
 

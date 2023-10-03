@@ -1,7 +1,7 @@
 import TestMap from "../components/Map/TestMap";
 
 
-export default async function Epic() {
+export default async function Mapbox() {
 	return (
 		<div className="flex flex-col bg-green-300">
 			<div>
