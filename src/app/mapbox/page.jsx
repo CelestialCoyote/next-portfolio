@@ -1,5 +1,5 @@
-//import TestMap from "../components/Map/TestMap";
-import MeteorMap from "../components/Map/MeteorsMap";
+import TestMap from "../components/Map/TestMap";
+//import MeteorMap from "../components/Map/MeteorsMap";
 
 
 export default async function Mapbox() {
@@ -9,8 +9,8 @@ export default async function Mapbox() {
 				Mapbox
 			</div>
 			<div className="m-6">
-				{/* <TestMap /> */}
-				<MeteorMap />
+				<TestMap />
+				{/* <MeteorMap /> */}
 			</div>
 		</div>
 	);

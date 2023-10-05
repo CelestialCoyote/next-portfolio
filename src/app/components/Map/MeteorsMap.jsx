@@ -4,7 +4,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import './Map.css';
-import meteors from '../../../data/meteor.geojson';
+import meteors from '../../../data/meteor.json';
 //import meteorImage from '../../../images/meteor.jpg'
 
 
