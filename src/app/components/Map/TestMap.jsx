@@ -2,11 +2,12 @@
 
 
 import { useState } from 'react';
+//import Image from 'next/image'
 import Map, { Layer, Marker, Popup, Source } from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
-import nationalParkBoundaries from '../../../data/NPS_Boundaries01.geojson';
-import meteors from '../../../data/meteor.json';
-import asteroidImage from '../../../images/asteroid.jpg';
+//import nationalParkBoundaries from '../../../data/NPS_Boundaries01.geojson';
+import meteors from '../../data/meteor.json'
+import asteroidImage from '../../images/asteroid.png';
 
 
 export default function TestMap() {
@@ -37,17 +38,17 @@ export default function TestMap() {
 	// 	}
 	// });
 
-	const earthquakes = ({
-		'id': 'earthquakes-layer',
-		'type': 'circle',
-		'source': 'earthquakes',
-		'paint': {
-			'circle-radius': 4,
-			'circle-stroke-width': 2,
-			'circle-color': 'red',
-			'circle-stroke-color': 'white'
-		}
-	});
+	// const earthquakes = ({
+	// 	'id': 'earthquakes-layer',
+	// 	'type': 'circle',
+	// 	'source': 'earthquakes',
+	// 	'paint': {
+	// 		'circle-radius': 4,
+	// 		'circle-stroke-width': 2,
+	// 		'circle-color': 'red',
+	// 		'circle-stroke-color': 'white'
+	// 	}
+	// });
 
 	return (
 		<Map
@@ -90,24 +91,33 @@ export default function TestMap() {
 						}}
 					>
 						<img src={asteroidImage} alt="Asteroid Icon" />
+						{/* <Image
+							src='/../../images/asteroid.png'
+							alt="Asteroid Icon"
+							height={20}
+							width={20}
+						/> */}
 					</button>
 				</Marker>
 			))}
 
 			{meteorSite && (
-				console.log(meteorSite.properties.crater_name)
+				//console.log(meteorSite.properties.crater_name)
 				//console.log(meteorSite.geometry.coordinates[0])
 
-				// <Popup
-				// 	anchor="bottom"
-				// 	latitude={meteorSite.geometry.coordinates[1]}
-				// 	longitude={meteorSite.geometry.coordinates[0]}
-				// 	onClose={() => setMeteorSite(null)}
-				// >
-				// 	<div className="">
-				// 		{meteorSite.properties.crater_name}
-				// 	</div>
-				// </Popup>
+				<Popup
+					anchor="bottom"
+					latitude={meteorSite.geometry.coordinates[1]}
+					longitude={meteorSite.geometry.coordinates[0]}
+					onClose={() => {
+						setMeteorSite(null);
+						console.log('pupup closed')
+					}}
+				>
+					{/* <div className=""> */}
+					{meteorSite.properties.crater_name}
+					{/* </div> */}
+				</Popup>
 			)}
 		</Map>
 	);
