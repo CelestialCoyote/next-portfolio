@@ -4,8 +4,7 @@
 import { useEffect, useState } from 'react';
 import Map, { Marker, Popup } from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
-import meteors from '../../data/meteor.json'
-import asteroidImage from '../../images/asteroid.png';
+import meteors from '@/app/data/meteor.json'
 
 
 export default function MeteorSitesMap() {
@@ -33,7 +32,7 @@ export default function MeteorSitesMap() {
 				zoom: 3
 			}}
 			mapStyle="mapbox://styles/mapbox/streets-v12"
-			style={{ width: "100%", height: 640, borderRadius: 10 }}
+			style={{ borderRadius: 10 }}
 		>
 
 			{meteors.features.map((meteor, index) => (
@@ -43,13 +42,13 @@ export default function MeteorSitesMap() {
 					longitude={meteor.geometry.coordinates[0]}
 				>
 					<button
-						className="bg-transparent cursor-pointer w-7 h-7"
+						className="bg-transparent cursor-pointer w-5 h-5"
 						onClick={e => {
 							e.preventDefault();
 							setMeteorSite(meteor);
 						}}
 					>
-						<img src={asteroidImage} alt="Asteroid Icon" />
+						<img src="/asteroid.png" alt="Asteroid Icon" />
 					</button>
 				</Marker>
 			))}
