@@ -41,8 +41,6 @@ export default function MeteorSitesMap() {
 					latitude={meteor.geometry.coordinates[1]}
 					longitude={meteor.geometry.coordinates[0]}
 					onClick={e => {
-						// If we let the click event propagates to the map, it will immediately close the popup
-						// with `closeOnClick: true`
 						e.originalEvent.stopPropagation();
 						setMeteorSite(meteor);
 					}}
@@ -52,44 +50,10 @@ export default function MeteorSitesMap() {
 						src="/asteroid.png"
 						alt="Asteroid Icon"
 					/>
-					{/* <button
-						className="bg-transparent cursor-pointer"
-						onClick={e => {
-							e.preventDefault();
-							setMeteorSite(meteor);
-						}}
-					>
-						<img
-							className="rounded-md w-5 h-5"
-							src="/asteroid.png"
-							alt="Asteroid Icon"
-						/>
-					</button> */}
 				</Marker>
 			))}
 
-			{/* {meteorSite ? (
-				//console.log(meteorSite.properties.crater_name)
-				//console.log(meteorSite.geometry.coordinates)
-
-				<Popup
-					latitude={meteorSite.geometry.coordinates[1]}
-					longitude={meteorSite.geometry.coordinates[0]}
-					onClose={() => {
-						setMeteorSite(null);
-						console.log('pupup closed');
-					}}
-				>
-					<div className="text-black">
-						{meteorSite.properties.crater_name}
-					</div>
-				</Popup>
-			) : null} */}
-
 			{meteorSite && (
-				//console.log(meteorSite.properties.crater_name)
-				//console.log(meteorSite.geometry.coordinates)
-
 				<Popup
 					anchor="bottom"
 					latitude={meteorSite.geometry.coordinates[1]}
