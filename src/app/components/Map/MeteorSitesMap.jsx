@@ -54,9 +54,9 @@ export default function MeteorSitesMap() {
 					}}
 				>
 					<img
-						className="rounded-md w-5 h-5"
-						src="/asteroid.png"
-						alt="Asteroid Icon"
+						className="rounded-md w-5 h-5 cursor-pointer"
+						src="/meteor.png"
+						alt="Meteor Icon"
 					/>
 				</Marker>
 			))}
@@ -119,11 +119,11 @@ export default function MeteorSitesMap() {
 					longitude={volcano.geometry.coordinates[0]}
 					onClick={e => {
 						e.originalEvent.stopPropagation();
-						setMeteorSite(volcano);
+						setVolcano(volcano);
 					}}
 				>
 					<img
-						className="rounded-md w-5 h-5"
+						className="rounded-md w-5 h-5 cursor-pointer"
 						src="/volcano.png"
 						alt="Volcano Icon"
 					/>
@@ -145,7 +145,7 @@ export default function MeteorSitesMap() {
 							<p className="font-bold mr-2">
 								Name:
 							</p>
-							{volcano.properties.NAME}
+							{volcano.properties.NAME_}
 						</div>
 						<div className="flex">
 							<p className="font-bold mr-2">
