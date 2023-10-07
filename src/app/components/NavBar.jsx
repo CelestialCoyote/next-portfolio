@@ -24,6 +24,11 @@ export default function Navbar() {
 			href: "/marvel",
 			//icon: UsersIcon
 		},
+		{
+			name: "Mapbox",
+			href: "/mapbox",
+			//icon: UsersIcon
+		},
 	];
 
 	return (
