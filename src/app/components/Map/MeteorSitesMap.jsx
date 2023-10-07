@@ -10,10 +10,10 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 
 export default function MeteorSitesMap() {
-	const [meteorSite, setMeteorSite] = useState(null);
-	const [meteor, setMeteor] = useState(false);
-	const [volcanoSite, setVolcanoSite] = useState(null);
-	const [volcano, setVolcano] = useState(false);
+	const [meteor, setMeteor] = useState(null);
+	const [meteorOn, setMeteorOn] = useState(false);
+	const [volcano, setVolcano] = useState(null);
+	const [volcanoOn, setVolcanoOn] = useState(false);
 
 	const earthquakes = ({
 		'id': 'earthquakes-layer',
@@ -47,7 +47,7 @@ export default function MeteorSitesMap() {
 				<Layer {...earthquakes} />
 			</Source> */}
 
-				{meteor && meteors.features.map((meteor, index) => (
+				{meteorOn && meteors.features.map((meteor, index) => (
 					<Marker
 						key={index}
 						latitude={meteor.geometry.coordinates[1]}
@@ -65,11 +65,11 @@ export default function MeteorSitesMap() {
 					</Marker>
 				))}
 
-				{meteorSite && (
+				{meteor && (
 					<Popup
 						anchor="bottom"
-						latitude={meteorSite.geometry.coordinates[1]}
-						longitude={meteorSite.geometry.coordinates[0]}
+						latitude={meteor.geometry.coordinates[1]}
+						longitude={meteor.geometry.coordinates[0]}
 						onClose={() => {
 							setMeteorSite(null);
 							console.log('pupup closed');
@@ -116,11 +116,11 @@ export default function MeteorSitesMap() {
 					</Popup>
 				)}
 
-				{volcano && volcanoes.features.map((volcanoSite, index) => (
+				{volcanoOn && volcanoes.features.map((volcano, index) => (
 					<Marker
 						key={index}
-						latitude={volcanoSite.geometry.coordinates[1]}
-						longitude={volcanoSite.geometry.coordinates[0]}
+						latitude={volcano.geometry.coordinates[1]}
+						longitude={volcano.geometry.coordinates[0]}
 						onClick={e => {
 							e.originalEvent.stopPropagation();
 							setVolcanoSite(volcanoSite);
@@ -184,14 +184,14 @@ export default function MeteorSitesMap() {
 						</div>
 					</Popup>
 				)}
-			</Map>
 
-			<MapControl
-				meteor={meteor}
-				setMeteor={setMeteor}
-				volcano={volcano}
-				setVolcano={setVolcano}
-			/>
+				<MapControl
+					meteorOn={meteorOn}
+					setMeteorOn={setMeteorOn}
+					volcanoOn={volcanoOn}
+					setVolcanoOn={setVolcanoOn}
+				/>
+			</Map>
 		</>
 	);
 };

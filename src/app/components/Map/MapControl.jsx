@@ -1,9 +1,9 @@
 export default function MapControl(
 	{ 
-		meteor,
-		setMeteor,
-		volcano,
-		setVolcano
+		meteorOn,
+		setMeteorOn,
+		volcanoOn,
+		setVolcanoOn
 	}) {
 
 	return (
@@ -15,8 +15,8 @@ export default function MapControl(
 					<input
 						className="mr-2"
 						type="checkbox"
-						checked={meteor}
-						onChange={() => setMeteor(!meteor)}
+						checked={meteorOn}
+						onChange={() => setMeteorOn(!meteorOn)}
 					/>
 					<label>Meteor Impact Sites</label>
 				</div>
@@ -25,8 +25,8 @@ export default function MapControl(
 					<input
 						className="mr-2"
 						type="checkbox"
-						checked={volcano}
-						onChange={() => setVolcano(!volcano)}
+						checked={volcanoOn}
+						onChange={() => setVolcanoOn(!volcanoOn)}
 					/>
 					<label>Volcano Sites</label>
 				</div>
