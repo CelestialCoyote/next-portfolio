@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import Map, { Layer, Source, Marker, Popup } from 'react-map-gl';
 import MapControl from './MapControl';
+import MeteorMarkers from './MapMarkers/meteorMarkers';
 import meteors from '@/app/data/meteor.json';
 import volcanoes from '@/app/data/volcano.json';
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -47,74 +48,12 @@ export default function MeteorSitesMap() {
 				<Layer {...earthquakes} />
 			</Source> */}
 
-				{meteorOn && meteors.features.map((meteor, index) => (
-					<Marker
-						key={index}
-						latitude={meteor.geometry.coordinates[1]}
-						longitude={meteor.geometry.coordinates[0]}
-						onClick={e => {
-							e.originalEvent.stopPropagation();
-							setMeteorSite(meteor);
-						}}
-					>
-						<img
-							className="rounded-md w-5 h-5 cursor-pointer"
-							src="/meteor.png"
-							alt="Meteor Icon"
-						/>
-					</Marker>
-				))}
-
-				{meteor && (
-					<Popup
-						anchor="bottom"
-						latitude={meteor.geometry.coordinates[1]}
-						longitude={meteor.geometry.coordinates[0]}
-						onClose={() => {
-							setMeteorSite(null);
-							console.log('pupup closed');
-						}}
-					>
-						<div className="flex flex-col text-black bg-slate-200">
-							<div className="flex">
-								<p className="font-bold mr-2">
-									Name:
-								</p>
-								{meteorSite.properties.crater_name}
-							</div>
-							<div className="flex">
-								<p className="font-bold mr-2">
-									State:
-								</p>
-								{meteorSite.properties.state}
-							</div>
-							<div className="flex">
-								<p className="font-bold mr-2">
-									Country:
-								</p>
-								{meteorSite.properties.country}
-							</div>
-							<div className="flex">
-								<p className="font-bold mr-2">
-									Target Rock:
-								</p>
-								{meteorSite.properties.target_rock}
-							</div>
-							<div className="flex">
-								<p className="font-bold mr-2">
-									Diameter (km):
-								</p>
-								{meteorSite.properties.diameter_km}
-							</div>
-							<div className="flex">
-								<p className="font-bold mr-2">
-									Age (millions years ago):
-								</p>
-								{meteorSite.properties.age_millions_years_ago}
-							</div>
-						</div>
-					</Popup>
-				)}
+				<MeteorMarkers
+					meteors={meteors}
+					meteor={meteor}
+					setMeteor={setMeteor}
+					meteorOn={meteorOn}
+				/>
 
 				{volcanoOn && volcanoes.features.map((volcano, index) => (
 					<Marker
