@@ -1,7 +1,14 @@
+"use client";
+
+
+import { useState } from 'react';
 import { Marker, Popup } from 'react-map-gl';
+import meteors from '@/app/data/meteor.json';
 
 
-export default function MeteorMarkers({ meteors, meteor, setMeteor, meteorOn }) {
+export default function MeteorMarkers({ meteorOn }) {
+	const [meteor, setMeteor] = useState(null);
+
 	return (
 
 		<>
