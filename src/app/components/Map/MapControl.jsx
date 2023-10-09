@@ -7,10 +7,20 @@ export default function MapControl(
 	}) {
 
 	return (
-		<div className="absolute top-0 right-0 bg-slate-300">
-			<h3>Show Maps</h3>
+		<div
+			className="
+				absolute
+				top-2
+				right-2
+				text-blue-500
+				rounded-lg
+				p-4
+				bg-slate-300
+			"
+		>
+			<h3 className="text-lg">Map Layers</h3>
 
-			<div>
+			<div className="mt-2">
 				<div className="">
 					<input
 						className="mr-2"
