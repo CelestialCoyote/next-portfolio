@@ -34,16 +34,17 @@ export default function MeteorSitesMap() {
 					latitude: 41.257160,
 					zoom: 3
 				}}
-				mapStyle="mapbox://styles/mapbox/streets-v12"
+				// mapStyle="mapbox://styles/mapbox/streets-v12"
+				mapStyle="mapbox://styles/celestialcoyote/clni9lajn084401qbahu19g4g"
 				style={{ borderRadius: 10 }}
 			>
 				{/* <Source
-				id="earhtquakes"
-				type="geojson"
-				data={'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'}
-			>
-				<Layer {...earthquakes} />
-			</Source> */}
+					id="earhtquakes"
+					type="geojson"
+					data={'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson'}
+				>
+					<Layer {...earthquakes} />
+				</Source> */}
 
 				<MeteorMarkers
 					meteorOn={meteorOn}

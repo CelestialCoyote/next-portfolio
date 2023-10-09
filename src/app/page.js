@@ -1,3 +1,6 @@
+import About from "./components/Portfolio/About";
+
+
 export default function Home() {
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] items-center">
@@ -6,6 +9,8 @@ export default function Home() {
 			>
 				Main Page
 			</label>
+
+			<About />
 			
 		</div>
 	);
