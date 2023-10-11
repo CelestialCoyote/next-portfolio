@@ -5,84 +5,73 @@ export default function Home() {
 	return (
 		<div className="flex flex-col h-[calc(100vh-5rem)] items-center">
 
-			<div className="flex flex-col items-center mt-10 w-full border-2">
-				<label className="text-3xl mb-8">Paul Stearns</label>
-				<label className="">Full Stack Developer</label>
+			<div className="flex flex-col items-center mt-10 mb-4 w-full border-2">
+				<div className="text-3xl mb-8">Paul Stearns</div>
+				<div className="">Full Stack Developer</div>
 			</div>
 
 			<div className="w-full text-center border-2">
-				<label>Skills</label>
+				<div className="text-2xl mt-4 mb-6">Skills</div>
 
 				<div className="flex w-full">
 
 					<div className="flex flex-col w-1/2 border-2">
-						<h3>Frontend Development</h3>
+						<div className="text-xl">Frontend Development</div>
+
 						<div className="grid grid-cols-2 gap-4">
-							<div className="flex justify-center items-center gap-2 p-2 border-red-500 border-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<h4>HTML</h4>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>React</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>CSS</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>Next</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>JavaScript</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>Tailwind CSS</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>Bootstrap</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>JavaScript</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>jQuery</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>HTML</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>React</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>CSS</p>
+							</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>Bootstrap</p>
+							</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>jQuery</p>
 							</div>
 						</div>
 					</div>
 
 					<div className="flex flex-col w-1/2 border-2">
-						<h3>Backend Development</h3>
+						<label className="text-xl">Backend Development</label>
 						<div className="grid grid-cols-2 gap-4">
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>Node JS</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>Node JS</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>MongoDB</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>Express JS</p>
 							</div>
-							<div className="flex gap-2 p-2">
-								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>mySQL</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>MongoDB</p>
+							</div>
+							<div className="flex justify-center items-center gap-2 p-2">
+								<BsPatchCheckFill className="text-purple-400" />
+								<p>mySQL</p>
 							</div>
 						</div>
 					</div>
