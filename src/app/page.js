@@ -18,12 +18,9 @@ export default function Home() {
 					<div className="flex flex-col w-1/2 border-2">
 						<h3>Frontend Development</h3>
 						<div className="grid grid-cols-2 gap-4">
-							<div className="flex gap-2 p-2">
+							<div className="flex justify-center items-center gap-2 p-2 border-red-500 border-2">
 								<BsPatchCheckFill className='experience-details-icon' />
-								<div>
-									<h4>HTML</h4>
-									<small className='text-light'>Experienced</small>
-								</div>
+								<h4>HTML</h4>
 							</div>
 							<div className="flex gap-2 p-2">
 								<BsPatchCheckFill className='experience-details-icon' />
